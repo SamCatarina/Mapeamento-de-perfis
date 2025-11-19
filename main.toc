@@ -1,0 +1,25 @@
+\babel@toc {brazil}{}\relax 
+\contentsline {chapter}{\numberline {1}Introdução}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivação e Justificativa}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objetivo Geral}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Objetivos Específicos}{4}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Contribuições do Trabalho}{4}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Referencial Teórico}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Determinantes Psicossociais na Escolha de Carreira}{6}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Estereótipos de Gênero e sua Influência nas Escolhas Acadêmicas}{6}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Fatores Socioeconômicos e Geográficos na Escolha Acadêmica}{7}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Fatores Familiares na Escolha Acadêmica}{8}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Fatores Educacionais na Escolha Acadêmica}{9}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Análise de Dados na Educação e Estudos sobre Perfil de Estudantes}{10}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Técnicas de Agrupamento como Estratégia de Mapeamento de Perfis}{11}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Explicabilidade e Interpretabilidade em Modelos de AM}{17}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Metodologia}{19}{chapter.3}%
+\contentsline {chapter}{\numberline {4}RESULTADOS E DISCUSSÕES}{22}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Caracterização da Amostra e Análise Exploratória dos Dados}{22}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Estrutura das perguntas}{23}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Modelo de Classificação e Análise das Variáveis mais Importantes}{24}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}analise com ambos os generos}{24}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}analise com genero feminino}{24}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}analise com genero masculino}{24}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Formação e Interpretação dos Grupos}{24}{section.4.3}%
+\contentsline {chapter}{\numberline {5}CONSIDERAÇÕES FINAIS}{29}{chapter.5}%
