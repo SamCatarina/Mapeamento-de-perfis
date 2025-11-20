@@ -442,7 +442,7 @@ Essas análises permitirão não apenas validar os agrupamentos encontrados, mas
 \section{Caracterização da Amostra e Análise Exploratória dos Dados}
 
 A pesquisa foi desenvolvida por meio da aplicação de um questionário estruturado, direcionado a estudantes do Ensino Superior público da cidade de Salgueiro, localizada no Sertão Central de Pernambuco. Ao todo, foram obtidas 88 respostas válidas, constituindo a base de dados utilizada nas análises subsequentes. O instrumento contemplou questões voltadas à trajetória de interesse dos respondentes em áreas STEM, tanto ao longo do tempo quanto no momento atual, bem como perguntas que investigavam fatores associados ao afastamento (ou permanência) nessas áreas. Além disso, o questionário abrangeu aspectos relacionados às motivações que influenciaram a escolha do curso superior escolhido e incluiu variáveis demográficas, como sexo, escolaridade dos pais, entre outras.
-
+-- explicar tratamento dos dados
 
 \begin{figure}[h!]
     \centering
@@ -538,6 +538,10 @@ A pesquisa foi desenvolvida por meio da aplicação de um questionário estrutur
 
 \subsection{analise com ambos os generos}
 
+Para esta etapa da análise, foi realizada uma seleção prévia de variáveis, mantendo-se apenas aquelas diretamente relacionadas a STEM e aos fatores identificados na literatura como influenciadores do interesse — ou da falta de interesse — por carreiras nessa área. Essa filtragem inicial teve o objetivo de garantir que o modelo analisasse exclusivamente os elementos associados ao interesse em STEM, permitindo que a interpretação com SHAP refletisse apenas esses fatores específicos, sem interferência de variáveis externas ao fenômeno investigado. Além disso, considerando o número reduzido de respondentes (n = 88), optou-se por trabalhar com apenas oito variáveis, assegurando maior estabilidade nas estimativas e evitando sobreajuste.
+
+Após a definição desse subconjunto de variáveis, o conjunto de dados é carregado e a variável-alvo gender é separada das demais variáveis explicativas selecionadas. Em seguida, os dados são divididos em treino e teste, e o modelo de Random Forest é ajustado com base nesse conjunto filtrado. Uma vez treinado, o modelo é interpretado por meio dos valores SHAP, aplicados sobre as amostras de teste, permitindo identificar de forma transparente como cada um desses fatores relacionados ao interesse por STEM contribui para as predições da variável gender.
+
 \begin{figure}[h!]
     \centering
     \caption{Legenda}
@@ -545,28 +549,158 @@ A pesquisa foi desenvolvida por meio da aplicação de um questionário estrutur
     \label{fig:shap_geral_gender}
 \end{figure}
 
-\begin{figure}[h!]
-    \centering
-    \caption{Legenda}
-    \includegraphics[width=0.9\textwidth]{geral_stem/dendrograma_geral_gender_stem.png}
-    \label{fig:dendrograma_geral_gender}
-\end{figure}
 
-\begin{figure}[h!]
-    \centering
-    \caption{Legenda}
-    \includegraphics[width=0.9\textwidth]{geral_stem/cotovelo_geral_gender_stem.png}
-    \label{fig:cotovelo_geral_gender}
-\end{figure}
+\begin{table}[H]
+\centering
+\caption{Tabela de tradução da variável gender}
+\begin{tabular}{p{6cm} p{3cm} p{3cm}}
+\hline
+\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
+\hline
+\raggedright genero-feminino & 0 & 0.00 \\
+\raggedright genero-masculino & 1 & 1.00 \\
+\hline
+\end{tabular}
+\label{tab:traducaoX}
+\end{table}
 
-\begin{figure}[h!]
-    \centering
-    \caption{Legenda}
-    \includegraphics[width=0.9\textwidth]{geral_stem/aranha_geral_gender_stem.png}
-    \label{fig:aranha_geral_gender}
-\end{figure}
+\begin{table}[H]
+\centering
+\caption{Tabela de tradução da variável feelingExcludedTech}
+\begin{tabular}{p{6cm} p{3cm} p{3cm}}
+\hline
+\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
+\hline
+\raggedright 1 & 0 & 0.00 \\
+\raggedright 2 & 1 & 0.33 \\
+\raggedright 3 & 2 & 0.67 \\
+\raggedright 4 & 3 & 1.00 \\
+\hline
+\end{tabular}
+\label{tab:traducao_feelingExcludedTech}
+\end{table}
 
+\begin{table}[H]
+\centering
+\caption{Tabela de tradução da variável activityGenderRestriction}
+\begin{tabular}{p{6cm} p{3cm} p{3cm}}
+\hline
+\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
+\hline
+\raggedright 1 & 0 & 0.00 \\
+\raggedright 2 & 1 & 0.25 \\
+\raggedright 3 & 2 & 0.50 \\
+\raggedright 4 & 3 & 0.75 \\
+\raggedright 5 & 4 & 1.00 \\
+\hline
+\end{tabular}
+\label{tab:traducao_activityGenderRestriction}
+\end{table}
 
+\begin{table}[H]
+\centering
+\caption{Tabela de tradução da variável professionsByGenderOpinion}
+\begin{tabular}{p{6cm} p{3cm} p{3cm}}
+\hline
+\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
+\hline
+\raggedright 1 & 0 & 0.00 \\
+\raggedright 2 & 1 & 0.25 \\
+\raggedright 3 & 2 & 0.50 \\
+\raggedright 4 & 3 & 0.75 \\
+\raggedright 5 & 4 & 1.00 \\
+\hline
+\end{tabular}
+\label{tab:traducao_professionsByGenderOpinion}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabela de tradução da variável teacherPerformanceValue}
+\begin{tabular}{p{6cm} p{3cm} p{3cm}}
+\hline
+\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
+\hline
+\raggedright alguns-valorizavam & 0 & 0.25 \\
+\raggedright desempenho-ignorado & 1 & 1.00 \\
+\raggedright maioria-valorizava & 2 & 0.00 \\
+\raggedright poucos-valorizavam & 3 & 0.75 \\
+\raggedright tratavam-neutro & 4 & 0.50 \\
+\hline
+\end{tabular}
+\label{tab:traducao_teacherPerformanceValue}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabela de tradução da variável preCollegeExactInterestLevel}
+\begin{tabular}{p{6cm} p{3cm} p{3cm}}
+\hline
+\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
+\hline
+\raggedright algum-interesse & 0 & 0.33 \\
+\raggedright muito-interesse & 1 & 0.00 \\
+\raggedright nenhum-interesse & 2 & 1.00 \\
+\raggedright pouco-interesse & 3 & 0.67 \\
+\hline
+\end{tabular}
+\label{tab:traducao_preCollegeExactInterestLevel}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabela de tradução da variável familyStudyIncentive}
+\begin{tabular}{p{6cm} p{3cm} p{3cm}}
+\hline
+\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
+\hline
+\raggedright 1 & 0 & 0.00 \\
+\raggedright 2 & 1 & 0.25 \\
+\raggedright 3 & 2 & 0.50 \\
+\raggedright 4 & 3 & 0.75 \\
+\raggedright 5 & 4 & 1.00 \\
+\hline
+\end{tabular}
+\label{tab:traducao_familyStudyIncentive}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabela de tradução da variável stemCareerInterest}
+\begin{tabular}{p{6cm} p{3cm} p{3cm}}
+\hline
+\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
+\hline
+\raggedright 1 & 0 & 0.00 \\
+\raggedright 2 & 1 & 0.25 \\
+\raggedright 3 & 2 & 0.50 \\
+\raggedright 4 & 3 & 0.75 \\
+\raggedright 5 & 4 & 1.00 \\
+\hline
+\end{tabular}
+\label{tab:traducao_stemCareerInterest}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabela de tradução da variável childhoodHobbiesTime}
+\begin{tabular}{p{6cm} p{3cm} p{3cm}}
+\hline
+\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
+\hline
+\raggedright as-vezes & 0 & 0.67 \\
+\raggedright nao-raremente & 1 & 0.00 \\
+\raggedright raramente-responsabilidades & 2 & 0.33 \\
+\raggedright sim-tempo-apoio & 3 & 1.00 \\
+\hline
+\end{tabular}
+\label{tab:traducao_childhoodHobbiesTime}
+\end{table}
+As principais observações a partir do gráfico de SHAP geral com ambos os gêneros são:
+- genero, que representa a variável alvo do modelo, codificada como 0 para feminino e 1 para masculino, é mostrando, dentro do shap, como a coluna de feature value, indicvado eplas cores vermelha (valores altos, no caso masculino) e azul (valores baixos, no caso feminino). Ou seja, no gráfico, os pontos azuis (valores baixos) estão associados ao gênero feminino, enquanto os pontos vermelhos (valores altos) estão associados ao gênero masculino.
+- percepção que o shap values mostra que o sentimento de exclusão em tech é  identificado como o mais importante para predizer o gênero, onde os valores mais altos dessa variável (indicando maior sentimento de exclusão) estão associados ao gênero feminino, enquanto os valores mais baixos (indicando menor sentimento de exclusão) estão associados ao gênero masculino. (esta de acrodo com os estudos achados)
+- a segunda variavel identificada foi a de restrição de atividades por questão de genero, que foi visto que a maioria dos respondentes para valores mais altos indicando que ja deixaram de realizar alguma atividade(valores baixos dessa variavel) pro questão de genero é predominantemente masculina, (--explica pelo teor da questão, ja que mostra diferente dos trabalhos, pode ter sido interpretado de forma diferente)
+- A terceira variável mais importante é a opinião sobre profissões por gênero, onde valores mais altos (indicando maior concordância com estereótipos de gênero em profissões) estão associados ao gênero masculino, enquanto valores mais baixos (indicando menor concordância com esses estereótipos) estão associados ao gênero feminino.
 \subsection{analise com genero feminino}
 
 \begin{figure}[h!]
@@ -590,6 +724,27 @@ A pesquisa foi desenvolvida por meio da aplicação de um questionário estrutur
 
 
 \section{Formação e Interpretação dos Grupos}
+
+\begin{figure}[h!]
+    \centering
+    \caption{Legenda}
+    \includegraphics[width=0.9\textwidth]{geral_stem/dendrograma_geral_gender_stem.png}
+    \label{fig:dendrograma_geral_gender}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \caption{Legenda}
+    \includegraphics[width=0.9\textwidth]{geral_stem/cotovelo_geral_gender_stem.png}
+    \label{fig:cotovelo_geral_gender}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \caption{Legenda}
+    \includegraphics[width=0.9\textwidth]{geral_stem/aranha_geral_gender_stem.png}
+    \label{fig:aranha_geral_gender}
+\end{figure}
 
 \chapter{CONSIDERAÇÕES FINAIS}
 

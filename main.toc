@@ -19,7 +19,7 @@
 \contentsline {subsection}{\numberline {4.1.1}Estrutura das perguntas}{23}{subsection.4.1.1}%
 \contentsline {section}{\numberline {4.2}Modelo de Classificação e Análise das Variáveis mais Importantes}{24}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}analise com ambos os generos}{24}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}analise com genero feminino}{24}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}analise com genero masculino}{24}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Formação e Interpretação dos Grupos}{24}{section.4.3}%
-\contentsline {chapter}{\numberline {5}CONSIDERAÇÕES FINAIS}{29}{chapter.5}%
+\contentsline {subsection}{\numberline {4.2.2}analise com genero feminino}{28}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}analise com genero masculino}{29}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Formação e Interpretação dos Grupos}{29}{section.4.3}%
+\contentsline {chapter}{\numberline {5}CONSIDERAÇÕES FINAIS}{32}{chapter.5}%
