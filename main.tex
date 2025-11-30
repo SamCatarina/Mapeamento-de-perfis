@@ -10,6 +10,7 @@
 \usepackage{url}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{seqsplit}
 \usepackage{enumitem}
 \usepackage{indentfirst}
 \usepackage{ragged2e} % melhora justificação
@@ -471,64 +472,87 @@ A pesquisa foi desenvolvida por meio da aplicação de um questionário estrutur
 \section*{Informações Pessoais}
 
 \begin{center}
-\begin{longtable}{|p{0.6cm}|p{6.0cm}|p{2.1cm}|p{3.0cm}|F{2.0cm}|}
+\begin{longtable}{|p{6.0cm}|p{2.1cm}|p{3.0cm}|p{4.0cm}|}
 \caption{Fichamento das questões – Informações Pessoais} \\
 \hline
-\textbf{\#} & \textbf{Questionamento} & \textbf{Tipo} & \textbf{Opções} & \textbf{Feature} \\
+ \textbf{Questionamento} & \textbf{Tipo} & \textbf{Opções} & \textbf{Feature} \\
 \hline
 \endfirsthead
 
 \hline
-\textbf{\#} & \textbf{Questionamento} & \textbf{Tipo} & \textbf{Opções} & \textbf{Feature} \\
+ \textbf{Questionamento} & \textbf{Tipo} & \textbf{Opções} & \textbf{Feature} \\
 \hline
 \endhead
 
-1 & Qual gênero você se identifica? 
+ Me sinto excluído(a) em conversas sobre tecnologia. 
+  & Seleção única
+  & Escala likert
+  & \seqsplit{feelingExcludedTech} \\
+\hline
+
+ Já deixei de participar de alguma atividade por achar que não era comum para o gênero com o qual me identifico.
   & Seleção única 
-  & Masculino; Feminino; Outro 
-  & gender \\
+  & Escala likert
+  & \seqsplit{activityGenderRestriction} \\
 \hline
 
-2 & Você atualmente está em uma universidade... 
-  & Seleção única 
-  & Pública; Privada 
-  & universityType \\
-\hline
-
-3 & Qual a área geral do seu curso?
+ Na sua opinião, existem profissões que são mais adequadas para homens e outras para mulheres?
   & Seleção única
-  & Exatas; Humanas; Biológicas; Sociais; Outro
-  & courseAreaGeneral \\
+  & Escala likert
+  & \seqsplit{professionsByGenderOpinion} \\
 \hline
 
-4 & Qual o seu curso?
-  & Aberta
-  & Texto livre
-  & courseName \\
-\hline
-
-5 & Maior escolaridade dos seus pais
+ De modo geral, ao longo da sua trajetória escolar, você sentia que seus professores valorizavam seu desempenho?
   & Seleção única
-  & Fund. incompleto; Fund. completo; Médio; Superior; Pós; Outro; Não sei
-  & parentsEducation \\
+  & Sim, a maioria valorizava;
+
+Alguns valorizavam;
+
+Neutro;
+
+Poucos valorizavam;
+
+Desempenho ignorado
+    & \seqsplit{teacherPerformanceValue}\\
 \hline
 
-6 & Tipo de escola cursada no fundamental e médio
+ Antes de entrar no ensino superior, você se interessava por
+                    disciplinas da área de exatas?
   & Seleção única
-  & Pública/Pública; Privada/Privada; Pública/Privada; Privada/Pública
-  & basicSchoolType \\
+  & Muito interesse;
+
+Algum interesse;
+
+Pouco interesse;
+
+Nenhum interesse
+  & \seqsplit{preCollegeExactInterestLevel} \\
 \hline
 
-7 & Na infância e adolescência, você tinha tempo e condições para praticar hobbies?
+ Minha familía me incentiva mais a continuar meus estudos do que a começar a trabalhar logo.
   & Seleção única
-  & Sempre; Às vezes; Raramente; Nunca
-  & childhoodHobbiesTime \\
+  & Escala likert
+  & \seqsplit{familyStudyIncentive} \\
 \hline
 
-8 & Principais atividades de interesse na infância e adolescência
-  & Múltipla escolha
-  & Lista selecionada
-  & childhoodMainActivities \\
+ Tenho interesse em me tornar um(a) profissional nas áreas de ciência, engenharia ou tecnologia.
+  & Seleção única
+  & Escala likert
+  & \seqsplit{stemCareerInterest} \\
+\hline
+
+ Durante sua infância e adolescência, você sentia que tinha
+                    tempo e condições para praticar seus hobbies e atividades de
+                    interesse pessoal?
+  & Seleção única
+  & Sim;
+
+Às vezes;
+
+Raramente;
+
+Não
+  & \seqsplit{childhoodHobbiesTime} \\
 \hline
 
 \end{longtable}
@@ -638,10 +662,10 @@ Após a definição desse subconjunto de variáveis, o conjunto de dados é carr
 \hline
 \textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
 \hline
-\raggedright algum-interesse & 0 & 0.33 \\
 \raggedright muito-interesse & 1 & 0.00 \\
-\raggedright nenhum-interesse & 2 & 1.00 \\
+\raggedright algum-interesse & 0 & 0.33 \\
 \raggedright pouco-interesse & 3 & 0.67 \\
+\raggedright nenhum-interesse & 2 & 1.00 \\
 \hline
 \end{tabular}
 \label{tab:traducao_preCollegeExactInterestLevel}
@@ -696,12 +720,64 @@ Após a definição desse subconjunto de variáveis, o conjunto de dados é carr
 \end{tabular}
 \label{tab:traducao_childhoodHobbiesTime}
 \end{table}
-As principais observações a partir do gráfico de SHAP geral com ambos os gêneros são:
-- genero, que representa a variável alvo do modelo, codificada como 0 para feminino e 1 para masculino, é mostrando, dentro do shap, como a coluna de feature value, indicvado eplas cores vermelha (valores altos, no caso masculino) e azul (valores baixos, no caso feminino). Ou seja, no gráfico, os pontos azuis (valores baixos) estão associados ao gênero feminino, enquanto os pontos vermelhos (valores altos) estão associados ao gênero masculino.
-- percepção que o shap values mostra que o sentimento de exclusão em tech é  identificado como o mais importante para predizer o gênero, onde os valores mais altos dessa variável (indicando maior sentimento de exclusão) estão associados ao gênero feminino, enquanto os valores mais baixos (indicando menor sentimento de exclusão) estão associados ao gênero masculino. (esta de acrodo com os estudos achados)
-- a segunda variavel identificada foi a de restrição de atividades por questão de genero, que foi visto que a maioria dos respondentes para valores mais altos indicando que ja deixaram de realizar alguma atividade(valores baixos dessa variavel) pro questão de genero é predominantemente masculina, (--explica pelo teor da questão, ja que mostra diferente dos trabalhos, pode ter sido interpretado de forma diferente)
-- A terceira variável mais importante é a opinião sobre profissões por gênero, onde valores mais altos (indicando maior concordância com estereótipos de gênero em profissões) estão associados ao gênero masculino, enquanto valores mais baixos (indicando menor concordância com esses estereótipos) estão associados ao gênero feminino.
-\subsection{analise com genero feminino}
+
+A análise inicial foi conduzida utilizando a base completa de respondentes, sem separação por gênero, tomando como variável alvo o próprio gênero (0 = feminino, 1 = masculino). O gráfico de SHAP resultante oferece uma visão global dos principais fatores que distinguem os respondentes do gênero feminino e masculino, permitindo observar tanto a relevância relativa de cada variável quanto a direção de seus efeitos.
+
+\subsubsection{Interpretação do Padrão de Cores no Gráfico de SHAP}
+
+Nos gráficos de interpretação de SHAP, os pontos são coloridos conforme o valor original da feature: valores altos são representados na cor vermelha, enquanto valores baixos são representados em azul. No caso da variável alvo “gênero”, valores baixos correspondem ao gênero feminino e valores altos ao masculino. Dessa forma, pontos azuis no gráfico indicam perfis associados ao público feminino, enquanto pontos vermelhos representam perfis associados ao público masculino. Essa distinção visual permite compreender a direção das relações entre as variáveis explicativas e a probabilidade de o modelo predizer um determinado gênero.
+
+\subsubsection{Sentimento de Exclusão em Tecnologia como Fator Mais Relevante}
+
+A variável mais importante identificada pelo modelo para diferenciar pessoas de gêneros distintos foi o \textit{sentimento de exclusão em áreas de tecnologia}. Os valores de SHAP indicam que valores mais altos dessa variável (representando maior sensação de exclusão) contribuem para aumentar a probabilidade de o respondente ser classificado como feminino, enquanto valores baixos estão principalmente associados ao público masculino. Esse resultado é compatível com a literatura especializada, que aponta que meninas e mulheres tendem a vivenciar com maior frequência percepções de exclusão, insegurança ou desestímulo relacionados a ambientes de tecnologia e STEM.
+
+\subsubsection{Restrição de Atividades por Motivo de Gênero}
+
+A segunda variável mais relevante corresponde à ocorrência de restrições de atividades devido ao gênero. Valores altos dessa variável --- indicando que a pessoa já deixou de realizar alguma atividade por questões de gênero --- foram mais frequentes entre respondentes do gênero feminino. Entretanto, observou-se que parte dos respondentes masculinos também sinalizou valores altos, o que pode indicar uma interpretação distinta da pergunta ou uma compreensão mais abrangente sobre o conceito de restrição. Esse comportamento diferencia-se de achados já consolidados na literatura e aponta para possíveis ambivalências na interpretação da questão.
+
+\subsubsection{Opinião sobre Profissões por Gênero}
+
+A terceira variável de maior importância foi a opinião acerca da existência de profissões consideradas mais adequadas a um gênero específico. Valores elevados --- indicando maior concordância com estereótipos de gênero em profissões --- foram mais associados ao público masculino, enquanto valores baixos --- indicando menor concordância --- foram mais associados ao público feminino. Esse resultado reforça achados prévios de que mulheres tendem a rejeitar mais intensamente concepções estereotipadas sobre papéis profissionais.
+
+\subsubsection{Incentivo Familiar: Estudo para Meninas e Trabalho para Meninos}
+
+Outra variável de destaque refere-se ao \textit{incentivo familiar}. A análise dos valores de SHAP mostra que meninas tendem a relatar maior incentivo familiar para estudar, continuar os estudos e seguir trajetórias acadêmicas mais longas. Entre os meninos, entretanto, o incentivo familiar aparece mais frequentemente associado à expectativa de trabalhar cedo ou priorizar atividades laborais. Esse contraste reflete padrões socioculturais observados em diversas regiões do país, onde há uma tendência de atribuir às meninas maior responsabilidade escolar e, aos meninos, maior responsabilidade econômica. Assim, o modelo evidencia que o tipo de incentivo familiar recebido constitui um dos fatores relevantes na diferenciação entre os gêneros.
+
+\subsubsection{Interesse em Seguir Carreira em STEM}
+
+A variável \textit{stemCareerInterest} surgiu como a sétima mais relevante para distinção entre os gêneros. Os valores de SHAP mostram que meninos tendem a responder com maior segurança e convicção quanto ao interesse em seguir carreira em STEM, frequentemente optando por respostas de concordância máxima. Já entre as meninas, observa-se maior hesitação: embora muitas indiquem interesse, poucas selecionam opções de certeza absoluta. Esse comportamento pode sugerir menor autoconfiança, menor percepção de pertencimento ou maior cautela ao declarar intenções futuras em áreas de STEM, o que está alinhado com evidências amplamente discutidas na literatura de gênero e educação em ciências.
+
+\subsection{Análise Comparativa por Gênero: Modelos para Mulheres e Homens}
+
+Para aprofundar a compreensão das diferenças entre percepções e fatores associados ao interesse em STEM, os dados foram separados por gênero. Para cada grupo foi treinado um modelo de Random Forest com o objetivo de prever o interesse em seguir carreira em STEM, e em seguida aplicaram-se gráficos de SHAP individuais. Essa abordagem permite observar como diferentes fatores influenciam de maneira distinta o interesse de mulheres e homens por carreiras STEM.
+
+\subsubsection{Similaridades Entre os Modelos: Interesse Prévio em STEM}
+
+Em ambos os modelos (feminino e masculino), a variável correspondente ao interesse prévio em STEM aparece como um dos fatores de maior impacto na previsão da intenção de carreira em STEM. Essa relação é intuitiva, uma vez que estudantes que demonstram afinidade e gosto pela área tendem naturalmente a considerar uma carreira no mesmo campo. Além disso, em oitavo lugar nos dois modelos, aparece a variável que avalia a importância do reconhecimento acadêmico por parte de professores. Essa variável indica que sentir-se reconhecido, incentivado ou valorizado pelos docentes está positivamente associado ao interesse por seguir uma trajetória em STEM, tanto para meninas quanto para meninos, sugerindo que práticas pedagógicas de apoio podem desempenhar papel relevante na motivação dos estudantes.
+
+\subsubsection{Sentimento de “STEM Não é Para Mim”}
+
+Um dos achados mais expressivos está na variável \textit{feltSTEMNotForMe}. Esse item aparece como a terceira variável mais importante entre as meninas, e como a quinta entre os meninos. Esse resultado indica que o sentimento de que STEM “não é para elas” exerce influência significativamente mais forte sobre a decisão das meninas. Esse achado está em consonância com a análise global, onde sentimentos de exclusão se mostraram fortemente associados ao gênero feminino. Embora o valor absoluto dessa variável não apresente diferenças tão acentuadas entre meninas que gostam ou não de STEM, o modelo consegue identificar nuances suficientes que tornam essa percepção mais determinante para elas.
+
+\subsubsection{Diversidade dos Gráficos e Diferença no Volume de Respostas}
+
+O gráfico de SHAP masculino apresenta maior diversidade e espalhamento de pontos, decorrente da maior quantidade de respostas de pessoas do gênero masculino. Esse desequilíbrio amostral influencia a variabilidade visual representada no gráfico, tornando-o mais denso e heterogêneo.
+
+\subsubsection{Estereótipos de Profissão e Interesse Masculino em STEM}
+
+Entre os meninos, a variável relacionada à opinião sobre profissões por gênero aparece como a segunda mais importante. O SHAP indica que meninos interessados em STEM tendem a reproduzir menos estereótipos de gênero, enquanto aqueles com baixo interesse na área tendem a concordar mais com tais estereótipos. Esse achado sugere que visões mais igualitárias sobre papéis profissionais estão associadas a maior inclinação masculina para carreiras STEM.
+
+\subsubsection{Sentimento de Exclusão: Presente no Modelo Masculino, Ausente no Feminino}
+
+Outro ponto relevante é que a variável \textit{feelingExcludedTech} aparece entre as principais no modelo masculino, mas não figura entre as mais relevantes para o modelo feminino. Isso ocorre porque a grande maioria das meninas — inclusive aquelas que afirmam gostar de STEM — indica algum nível de sentimento de exclusão em áreas tecnológicas. Assim, dentro do grupo feminino, essa variável apresenta baixa variabilidade, tornando-se menos útil para distinguir quem tem interesse em STEM de quem não tem. Já entre os meninos, essa percepção apresenta diferenças mais marcantes, o que faz com que a variável contribua de forma mais significativa para o modelo masculino.
+
+\subsubsection{Admiração por Professores de Exatas}
+
+Na análise feminina, destaca-se a presença da variável \textit{admiredExactTeacherGender}, ausente entre as mais relevantes no modelo masculino. Esse resultado indica que meninas que se enxergam em STEM tendem a admirar tanto professores homens quanto professoras mulheres de áreas de exatas. Esse achado reforça a importância de modelos de referência --- especialmente figuras femininas --- para que meninas se sintam representadas e visualizem sua possibilidade de pertencimento em carreiras STEM.
+
+
+
+
 
 \begin{figure}[h!]
     \centering
@@ -710,9 +786,6 @@ As principais observações a partir do gráfico de SHAP geral com ambos os gên
     \label{fig:shap_feminino_future}
 \end{figure}
 
-
-
-\subsection{analise com genero masculino}
 
 \begin{figure}[h!]
     \centering
@@ -725,26 +798,7 @@ As principais observações a partir do gráfico de SHAP geral com ambos os gên
 
 \section{Formação e Interpretação dos Grupos}
 
-\begin{figure}[h!]
-    \centering
-    \caption{Legenda}
-    \includegraphics[width=0.9\textwidth]{geral_stem/dendrograma_geral_gender_stem.png}
-    \label{fig:dendrograma_geral_gender}
-\end{figure}
 
-\begin{figure}[h!]
-    \centering
-    \caption{Legenda}
-    \includegraphics[width=0.9\textwidth]{geral_stem/cotovelo_geral_gender_stem.png}
-    \label{fig:cotovelo_geral_gender}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \caption{Legenda}
-    \includegraphics[width=0.9\textwidth]{geral_stem/aranha_geral_gender_stem.png}
-    \label{fig:aranha_geral_gender}
-\end{figure}
 
 \chapter{CONSIDERAÇÕES FINAIS}
 
