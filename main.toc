@@ -17,20 +17,9 @@
 \contentsline {chapter}{\numberline {4}RESULTADOS E DISCUSSÕES}{22}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Caracterização da Amostra e Análise Exploratória dos Dados}{22}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Estrutura das perguntas}{23}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Modelo de Classificação e Análise das Variáveis mais Importantes}{25}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}analise com ambos os generos}{25}{subsection.4.2.1}%
-\contentsline {subsubsection}{Interpretação do Padrão de Cores no Gráfico de SHAP}{28}{section*.16}%
-\contentsline {subsubsection}{Sentimento de Exclusão em Tecnologia como Fator Mais Relevante}{28}{section*.17}%
-\contentsline {subsubsection}{Restrição de Atividades por Motivo de Gênero}{28}{section*.18}%
-\contentsline {subsubsection}{Opinião sobre Profissões por Gênero}{29}{section*.19}%
-\contentsline {subsubsection}{Incentivo Familiar: Estudo para Meninas e Trabalho para Meninos}{29}{section*.20}%
-\contentsline {subsubsection}{Interesse em Seguir Carreira em STEM}{29}{section*.21}%
-\contentsline {subsection}{\numberline {4.2.2}Análise Comparativa por Gênero: Modelos para Mulheres e Homens}{30}{subsection.4.2.2}%
-\contentsline {subsubsection}{Similaridades Entre os Modelos: Interesse Prévio em STEM}{30}{section*.22}%
-\contentsline {subsubsection}{Sentimento de “STEM Não é Para Mim”}{30}{section*.23}%
-\contentsline {subsubsection}{Diversidade dos Gráficos e Diferença no Volume de Respostas}{30}{section*.24}%
-\contentsline {subsubsection}{Estereótipos de Profissão e Interesse Masculino em STEM}{31}{section*.25}%
-\contentsline {subsubsection}{Sentimento de Exclusão: Presente no Modelo Masculino, Ausente no Feminino}{31}{section*.26}%
-\contentsline {subsubsection}{Admiração por Professores de Exatas}{31}{section*.27}%
-\contentsline {section}{\numberline {4.3}Formação e Interpretação dos Grupos}{31}{section.4.3}%
-\contentsline {chapter}{\numberline {5}CONSIDERAÇÕES FINAIS}{33}{chapter.5}%
+\contentsline {section}{\numberline {4.2}Modelo de Classificação e Análise das Variáveis mais Importantes}{24}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}analise com ambos os generos}{24}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}analise com genero feminino}{24}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}analise com genero masculino}{24}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Formação e Interpretação dos Grupos}{24}{section.4.3}%
+\contentsline {chapter}{\numberline {5}CONSIDERAÇÕES FINAIS}{29}{chapter.5}%
