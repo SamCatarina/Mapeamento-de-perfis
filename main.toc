@@ -1,36 +1,42 @@
 \babel@toc {brazil}{}\relax 
-\contentsline {chapter}{\numberline {1}Introdução}{2}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Motivação e Justificativa}{2}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Objetivo Geral}{4}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Objetivos Específicos}{4}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Contribuições do Trabalho}{4}{section.1.4}%
-\contentsline {chapter}{\numberline {2}Referencial Teórico}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Determinantes Psicossociais na Escolha de Carreira}{6}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Estereótipos de Gênero e sua Influência nas Escolhas Acadêmicas}{6}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Fatores Socioeconômicos e Geográficos na Escolha Acadêmica}{7}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Fatores Familiares na Escolha Acadêmica}{8}{subsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.1.4}Fatores Educacionais na Escolha Acadêmica}{9}{subsection.2.1.4}%
-\contentsline {section}{\numberline {2.2}Análise de Dados na Educação e Estudos sobre Perfil de Estudantes}{10}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Técnicas de Agrupamento como Estratégia de Mapeamento de Perfis}{11}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Explicabilidade e Interpretabilidade em Modelos de AM}{17}{section.2.4}%
-\contentsline {chapter}{\numberline {3}Metodologia}{19}{chapter.3}%
-\contentsline {chapter}{\numberline {4}RESULTADOS E DISCUSSÕES}{22}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Caracterização da Amostra e Análise Exploratória dos Dados}{22}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Estrutura das perguntas}{23}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Modelo de Classificação e Análise das Variáveis mais Importantes}{25}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}analise com ambos os generos}{25}{subsection.4.2.1}%
-\contentsline {subsubsection}{Interpretação do Padrão de Cores no Gráfico de SHAP}{28}{section*.16}%
-\contentsline {subsubsection}{Sentimento de Exclusão em Tecnologia como Fator Mais Relevante}{28}{section*.17}%
-\contentsline {subsubsection}{Restrição de Atividades por Motivo de Gênero}{28}{section*.18}%
-\contentsline {subsubsection}{Opinião sobre Profissões por Gênero}{29}{section*.19}%
-\contentsline {subsubsection}{Incentivo Familiar: Estudo para Meninas e Trabalho para Meninos}{29}{section*.20}%
-\contentsline {subsubsection}{Interesse em Seguir Carreira em STEM}{29}{section*.21}%
-\contentsline {subsection}{\numberline {4.2.2}Análise Comparativa por Gênero: Modelos para Mulheres e Homens}{30}{subsection.4.2.2}%
-\contentsline {subsubsection}{Similaridades Entre os Modelos: Interesse Prévio em STEM}{30}{section*.22}%
-\contentsline {subsubsection}{Sentimento de “STEM Não é Para Mim”}{30}{section*.23}%
-\contentsline {subsubsection}{Diversidade dos Gráficos e Diferença no Volume de Respostas}{30}{section*.24}%
-\contentsline {subsubsection}{Estereótipos de Profissão e Interesse Masculino em STEM}{31}{section*.25}%
-\contentsline {subsubsection}{Sentimento de Exclusão: Presente no Modelo Masculino, Ausente no Feminino}{31}{section*.26}%
-\contentsline {subsubsection}{Admiração por Professores de Exatas}{31}{section*.27}%
-\contentsline {section}{\numberline {4.3}Formação e Interpretação dos Grupos}{31}{section.4.3}%
-\contentsline {chapter}{\numberline {5}CONSIDERAÇÕES FINAIS}{33}{chapter.5}%
+\contentsline {chapter}{\numberline {1}Introdução}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivação e Justificativa}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objetivo Geral}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Objetivos Específicos}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Contribuições do Trabalho}{5}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Referencial Teórico}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Determinantes Psicossociais na Escolha de Carreira}{7}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Estereótipos de Gênero e sua Influência nas Escolhas Acadêmicas}{7}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Fatores Socioeconômicos e Geográficos na Escolha Acadêmica}{8}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Fatores Familiares na Escolha Acadêmica}{9}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Fatores Educacionais na Escolha Acadêmica}{10}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Análise de Dados na Educação e Estudos sobre Perfil de Estudantes}{11}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Técnicas de Agrupamento como Estratégia de Mapeamento de Perfis}{12}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Explicabilidade e Interpretabilidade em Modelos de AM}{18}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Metodologia}{20}{chapter.3}%
+\contentsline {chapter}{\numberline {4}RESULTADOS E DISCUSSÕES}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Caracterização da Amostra e Análise Exploratória dos Dados}{23}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Estrutura das perguntas}{24}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Modelo de Classificação e Análise das Variáveis mais Importantes}{26}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}analise com ambos os generos}{26}{subsection.4.2.1}%
+\contentsline {subsubsection}{Interpretação do Padrão de Cores no Gráfico de SHAP}{29}{section*.16}%
+\contentsline {subsubsection}{Sentimento de Exclusão em Tecnologia como Fator Mais Relevante}{29}{section*.17}%
+\contentsline {subsubsection}{Restrição de Atividades por Motivo de Gênero}{29}{section*.18}%
+\contentsline {subsubsection}{Opinião sobre Profissões por Gênero}{30}{section*.19}%
+\contentsline {subsubsection}{Incentivo Familiar: Estudo para Meninas e Trabalho para Meninos}{30}{section*.20}%
+\contentsline {subsubsection}{Interesse em Seguir Carreira em STEM}{30}{section*.21}%
+\contentsline {subsection}{\numberline {4.2.2}Análise Comparativa por Gênero: Modelos para Mulheres e Homens}{31}{subsection.4.2.2}%
+\contentsline {subsubsection}{Similaridades Entre os Modelos: Interesse Prévio em STEM}{31}{section*.22}%
+\contentsline {subsubsection}{Sentimento de “STEM Não é Para Mim”}{31}{section*.23}%
+\contentsline {subsubsection}{Diversidade dos Gráficos e Diferença no Volume de Respostas}{31}{section*.24}%
+\contentsline {subsubsection}{Estereótipos de Profissão e Interesse Masculino em STEM}{32}{section*.25}%
+\contentsline {subsubsection}{Sentimento de Exclusão: Presente no Modelo Masculino, Ausente no Feminino}{32}{section*.26}%
+\contentsline {subsubsection}{Admiração por Professores de Exatas}{32}{section*.27}%
+\contentsline {section}{\numberline {4.3}Formação e Interpretação dos Grupos}{32}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Construção da Estrutura Hierárquica}{34}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Determinação do Número Ideal de Clusters}{34}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Estrutura e Tamanho dos Clusters}{34}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Interpretação dos Perfis Identificados}{34}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.5}Síntese Interpretativa dos Grupos}{36}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}Visualização Comparativa dos Perfis por Cluster}{36}{subsection.4.3.6}%
+\contentsline {chapter}{\numberline {5}CONSIDERAÇÕES FINAIS}{42}{chapter.5}%

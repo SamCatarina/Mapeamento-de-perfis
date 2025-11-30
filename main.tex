@@ -9,6 +9,9 @@
 \usepackage{float}
 \usepackage{url}
 \usepackage{seqsplit}
+\usepackage{booktabs}
+\usepackage{float}     % para usar [H] (opcional)
+\usepackage{caption}   % opcional, melhora legendas
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{enumitem}
@@ -798,7 +801,267 @@ Na análise feminina, destaca-se a presença da variável \textit{admiredExactTe
 
 \section{Formação e Interpretação dos Grupos}
 
+Após a identificação das oito variáveis mais relevantes pelo modelo Random Forest com SHAP na análise geral, procedeu-se à formação de grupos (clusters) utilizando a técnica de \textit{clustering} hierárquico. O objetivo desta etapa foi verificar se os respondentes apresentavam padrões semelhantes de comportamento ou percepção, e se esses padrões permitiam a formação de perfis distintos de estudantes. As oito \textit{features} utilizadas como base para essa etapa foram: \textit{feelingExcludedTech}, \textit{activityGenderRestriction}, \textit{professionsByGenderOpinion}, \textit{teacherPerformanceValue}, \textit{preCollegeExactInterestLevel}, \textit{familyStudyIncentive}, \textit{stemCareerInterest} e \textit{childhoodHobbiesTime}. Essas variáveis foram selecionadas por representarem os fatores mais importantes para diferenciação entre os gêneros na análise anterior, o que justificou sua utilização como descritores dos possíveis perfis.
 
+\subsection{Construção da Estrutura Hierárquica}
+
+Para a formação dos grupos foi aplicado o método hierárquico aglomerativo com ligação de Ward, que busca minimizar a variância interna durante a junção dos grupos. O dendrograma resultante, apresentado na Figura \ref{fig:dendrograma}, permite visualizar a forma como as amostras se agrupam ao longo do processo de fusão, bem como as distâncias às quais as junções ocorrem.
+
+Ao observar o dendrograma, nota-se a presença de dois grandes blocos claramente separados, o que já indica a possibilidade de existência de dois grupos bem definidos entre os respondentes. A separação visual observada no gráfico sugere que os estudantes apresentam dois padrões predominantes de respostas nas variáveis analisadas.
+
+\subsection{Determinação do Número Ideal de Clusters}
+
+Para corroborar a indicação visual do dendrograma, aplicou-se o método do cotovelo, conforme a Figura \ref{fig:cotovelo}. A análise da soma das variâncias intra-grupo revelou uma queda acentuada ao se passar de um para dois clusters, seguida de uma redução significativamente menor a partir de três grupos. Esse comportamento caracteriza o “cotovelo” clássico no ponto correspondente a dois clusters. 
+
+A análise foi complementada com o coeficiente de Silhueta, cujo valor máximo também ocorreu para dois clusters. Embora o valor da silhueta (0,149) seja baixo, o que indica estruturas parcialmente sobrepostas, esse valor é comum em bases de percepção subjetiva e dados sociocomportamentais. Dessa forma, tanto o método do cotovelo quanto o coeficiente de silhueta convergiram para a definição de dois clusters como número ideal.
+
+\subsection{Estrutura e Tamanho dos Clusters}
+
+Os dois grupos formados apresentam tamanhos distintos: o \textbf{Cluster 1} com 23 participantes e o \textbf{Cluster 2} com 65 participantes. A distribuição de gênero indica uma diferença marcante entre os grupos: o Cluster 1 possui maioria masculina (22 homens e apenas 1 mulher), enquanto o Cluster 2 apresenta uma composição mais equilibrada (27 mulheres e 38 homens). Esse desequilíbrio sugere, desde o início, que os clusters podem refletir diferenças de percepção associadas ao gênero e potencialmente relacionadas às barreiras ou estímulos vinculados ao interesse por STEM.
+
+\subsection{Interpretação dos Perfis Identificados}
+
+A Tabela \ref{tab:clusters} (resultante dos cruzamentos das variáveis com os clusters) permite inferir características marcantes de cada grupo.
+
+\subsubsection*{Cluster 1: Perfil com menor identificação com STEM e maior presença de sentimentos negativos}
+
+O primeiro cluster reúne majoritariamente estudantes do gênero masculino. As características predominantes incluem:
+
+\begin{itemize}
+    \item maiores concentrações de respostas intermediárias ou negativas em \textit{preCollegeExactInterestLevel}, indicando baixo ou moderado interesse prévio por áreas de exatas;
+    \item menor incentivo familiar para os estudos, concentrando valores mais baixos em \textit{familyStudyIncentive};
+    \item níveis reduzidos de interesse em seguir carreira em STEM (\textit{stemCareerInterest});
+    \item tempo de dedicação mais limitado a atividades de interesse pessoal na infância (\textit{childhoodHobbiesTime}), sugerindo menor contato prévio com atividades que tipicamente estimulam curiosidade científica e tecnológica;
+    \item maior reprodução de estereótipos de gênero associados a profissões, evidenciado pela concentração elevada de valores altos em \textit{professionsByGenderOpinion}.
+\end{itemize}
+
+Assim, o Cluster 1 corresponde a um perfil menos próximo das áreas STEM, marcado por visões mais rígidas sobre profissões por gênero, menor incentivo familiar, menor interesse prévio e menor engajamento espontâneo em atividades de caráter exploratório durante a infância. Essa combinação está alinhada com a predominância masculina no grupo, dado que os meninos, conforme observado na análise de SHAP, tendem a reproduzir mais estereótipos de gênero e demonstram menor incentivo familiar a continuar os estudos.
+
+\subsubsection*{Cluster 2: Perfil mais orientado ao interesse e permanência em STEM}
+
+O Cluster 2, mais numeroso e composto por uma distribuição de gênero mais balanceada, apresenta padrões diferentes:
+
+\begin{itemize}
+    \item maiores níveis de interesse prévio em exatas (\textit{preCollegeExactInterestLevel});
+    \item elevados índices de incentivo familiar aos estudos (\textit{familyStudyIncentive}), reforçando achados prévios de que meninas tendem a receber mais incentivo para estudar e permanecer na escola, enquanto meninos recebem mais estímulo para trabalhar;
+    \item maior tempo dedicado a hobbies e atividades na infância (\textit{childhoodHobbiesTime}), o que pode estar associado a maior autonomia e maior espaço para desenvolvimento de interesses pessoais;
+    \item maior interesse declarado em seguir carreira em STEM (\textit{stemCareerInterest});
+    \item menor concordância com estereótipos de gênero em profissões, concentrando valores mais baixos em \textit{professionsByGenderOpinion}.
+\end{itemize}
+
+Esse conjunto sugere um perfil mais favorável à aproximação com STEM, tanto em termos de interesse quanto de percepções e contextos de incentivo. Esse grupo mostra características compatíveis com estudantes que se sentem mais confortáveis e motivados em relação à área, além de contarem com mais suporte familiar e apresentarem menor internalização de estereótipos de gênero.
+
+\subsection{Síntese Interpretativa dos Grupos}
+
+Os resultados indicam que a formação dos clusters reflete diferenças estruturais relevantes entre os estudantes, especialmente no que diz respeito ao interesse por STEM, às percepções de estereótipos de gênero e ao incentivo recebido ao longo da trajetória educativa.
+
+De forma geral, o \textbf{Cluster 1} representa um grupo mais distante das áreas de STEM, com menor interesse e menores incentivos, enquanto o \textbf{Cluster 2} representa um perfil mais envolvido e motivado. A presença de estereótipos de gênero mais fortes no Cluster 1 e de maior incentivo familiar no Cluster 2 reforça achados já observados nas análises anteriores com SHAP.
+
+Além disso, a distribuição de gênero entre os clusters sugere que fatores socioculturais continuam desempenhando papel crucial na forma como homens e mulheres percebem e se relacionam com as áreas STEM, evidenciando a necessidade de ações de incentivo e acolhimento especialmente voltadas para estudantes que se encontram mais próximos do perfil identificado no Cluster 1.
+
+\subsection{Visualização Comparativa dos Perfis por Cluster}
+
+Além do dendrograma e das análises numéricas apresentadas, a Figura~\ref{fig:radar_clusters} mostra o gráfico do tipo radar (ou gráfico aranha) com as médias normalizadas das oito \textit{features} que compuseram o processo de clusterização. Essa visualização permite comparar de forma intuitiva o perfil médio dos dois grupos identificados, destacando dimensões nas quais há maior divergência entre os clusters.
+
+Observa-se que os dois grupos apresentam padrões distintos em praticamente todas as variáveis analisadas, o que reforça a consistência da divisão em dois clusters identificada pelo método hierárquico e confirmada pelos critérios do cotovelo e da silhueta.
+
+No caso do \textbf{Cluster 1}, verifica-se que esse grupo apresenta valores mais elevados em \textit{professionsByGenderOpinion} e \textit{feelingExcludedTech}. Isso indica maior concordância com estereótipos de gênero associados a profissões e maior sensação de exclusão em ambientes de tecnologia, respectivamente. Esses resultados são coerentes com o perfil anteriormente descrito para esse cluster, predominantemente masculino e com menor identificação com a área de STEM.
+
+Por outro lado, o \textbf{Cluster 2} apresenta valores mais altos em variáveis que representam incentivo e interesse em STEM, como \textit{familyStudyIncentive}, \textit{preCollegeExactInterestLevel} e \textit{stemCareerInterest}. O comportamento dessas variáveis sugere um grupo com maior motivação educacional, maior incentivo familiar para estudar e maior interesse consolidado em seguir carreira na área. Além disso, o Cluster 2 apresenta níveis mais elevados de \textit{childhoodHobbiesTime}, indicando maior tempo dedicado a atividades formativas ou exploratórias na infância, o que pode estar relacionado ao desenvolvimento de habilidades ou interesses associados à área científica e tecnológica.
+
+Essa visualização contribui para confirmar e sintetizar os padrões previamente observados: enquanto o Cluster 1 se aproxima de um perfil de menor engajamento com STEM e maior manifestação de estereótipos de gênero, o Cluster 2 mostra características mais favoráveis à permanência e ao interesse em carreiras científicas e tecnológicas. Dessa forma, o gráfico aranha funciona como uma ferramenta comparativa poderosa para compreender a estrutura e as diferenças qualitativas entre os grupos identificados no processo de clusterização.
+%====================================================================
+% Tabela 1 — feelingExcludedTech
+%====================================================================
+\begin{table}[H]
+\centering
+\caption{Distribuição da feature \textit{feelingExcludedTech} por cluster}
+\label{tab:feelingExcludedTech}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Cluster} & \textbf{0.00} & \textbf{0.33} & \textbf{0.66} & \textbf{1.00} \\
+\midrule
+1 & 7 & 9 & 7 & 0 \\
+2 & 5 & 28 & 22 & 10 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%====================================================================
+% Tabela 2 — activityGenderRestriction
+%====================================================================
+\begin{table}[H]
+\centering
+\caption{Distribuição da feature \textit{activityGenderRestriction} por cluster}
+\label{tab:activityGenderRestriction}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Cluster} & \textbf{0.00} & \textbf{0.25} & \textbf{0.50} & \textbf{0.75} & \textbf{1.00} \\
+\midrule
+1 & 10 & 5 & 4 & 1 & 3 \\
+2 & 12 & 30 & 11 & 10 & 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%====================================================================
+% Tabela 3 — professionsByGenderOpinion
+%====================================================================
+\begin{table}[H]
+\centering
+\caption{Distribuição da feature \textit{professionsByGenderOpinion} por cluster}
+\label{tab:professionsByGenderOpinion}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Cluster} & \textbf{0.00} & \textbf{0.25} & \textbf{0.50} & \textbf{0.75} & \textbf{1.00} \\
+\midrule
+1 & 0 & 1 & 8 & 11 & 3 \\
+2 & 43 & 18 & 2 & 1 & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%====================================================================
+% Tabela 4 — teacherPerformanceValue
+%====================================================================
+\begin{table}[H]
+\centering
+\caption{Distribuição da feature \textit{teacherPerformanceValue} por cluster}
+\label{tab:teacherPerformanceValue}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Cluster} & \textbf{0.00} & \textbf{0.25} & \textbf{0.50} & \textbf{0.75} & \textbf{1.00} \\
+\midrule
+1 & 3 & 11 & 5 & 2 & 2 \\
+2 & 26 & 30 & 4 & 5 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%====================================================================
+% Tabela 5 — preCollegeExactInterestLevel
+%====================================================================
+\begin{table}[H]
+\centering
+\caption{Distribuição da feature \textit{preCollegeExactInterestLevel} por cluster}
+\label{tab:preCollegeExactInterestLevel}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Cluster} & \textbf{0.00} & \textbf{0.33} & \textbf{0.66} & \textbf{1.00} \\
+\midrule
+1 & 15 & 6 & 2 & 0 \\
+2 & 31 & 22 & 9 & 3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%====================================================================
+% Tabela 6 — familyStudyIncentive
+%====================================================================
+\begin{table}[H]
+\centering
+\caption{Distribuição da feature \textit{familyStudyIncentive} por cluster}
+\label{tab:familyStudyIncentive}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Cluster} & \textbf{0.00} & \textbf{0.25} & \textbf{0.50} & \textbf{0.75} & \textbf{1.00} \\
+\midrule
+1 & 0 & 0 & 4 & 9 & 10 \\
+2 & 3 & 5 & 14 & 19 & 24 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%====================================================================
+% Tabela 7 — stemCareerInterest
+%====================================================================
+\begin{table}[H]
+\centering
+\caption{Distribuição da feature \textit{stemCareerInterest} por cluster}
+\label{tab:stemCareerInterest}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Cluster} & \textbf{0.00} & \textbf{0.25} & \textbf{0.50} & \textbf{0.75} & \textbf{1.00} \\
+\midrule
+1 & 0 & 0 & 2 & 11 & 10 \\
+2 & 1 & 3 & 3 & 26 & 32 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%====================================================================
+% Tabela 8 — childhoodHobbiesTime
+%====================================================================
+\begin{table}[H]
+\centering
+\caption{Distribuição da feature \textit{childhoodHobbiesTime} por cluster}
+\label{tab:childhoodHobbiesTime}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Cluster} & \textbf{0.00} & \textbf{0.33} & \textbf{0.66} & \textbf{1.00} \\
+\midrule
+1 & 0 & 1 & 12 & 10 \\
+2 & 2 & 4 & 29 & 30 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%====================================================================
+% Tabela 9 — Tamanho dos Clusters
+%====================================================================
+\begin{table}[H]
+\centering
+\caption{Tamanho de cada cluster}
+\label{tab:clusterSize}
+\begin{tabular}{lc}
+\toprule
+\textbf{Cluster} & \textbf{Quantidade} \\
+\midrule
+1 & 23 \\
+2 & 65 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%====================================================================
+% Tabela 10 — Distribuição de Gênero por Cluster
+%====================================================================
+\begin{table}[H]
+\centering
+\caption{Distribuição de gênero por cluster}
+\label{tab:genderByCluster}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Cluster} & \textbf{Masculino (0)} & \textbf{Feminino (1)} \\
+\midrule
+1 & 1 & 22 \\
+2 & 27 & 38 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{figure}[h!]
+    \centering
+
+    \caption{Legenda}
+    \includegraphics[width=0.9\textwidth]{geral_stem/dendrograma_geral_gender_stem.png}
+    \label{fig:shap_masculino_future}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \caption{Legenda}
+    \includegraphics[width=0.9\textwidth]{geral_stem/cotovelo_geral_gender_stem.png}
+    \label{fig:shap_masculino_future}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+    \caption{Legenda}
+    \includegraphics[width=0.9\textwidth]{geral_stem/aranha_geral_gender_stem.png}
+    \label{fig:shap_masculino_future}
+\end{figure}
 
 \chapter{CONSIDERAÇÕES FINAIS}
 

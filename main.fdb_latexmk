@@ -1,16 +1,16 @@
 # Fdb version 4
-["bibtex main"] 1764471127.60942 "main.aux" "main.bbl" "main" 1764471129.60758 0
+["bibtex main"] 1764527593.9474 "main.aux" "main.bbl" "main" 1764527596.75787 0
   "./referencias.bib" 1763584599.58851 15223 1971b08a8533f0e083f3b1dd168497f3 ""
   "/usr/share/texlive/texmf-dist/bibtex/bib/abntex2/abntex2-options.bib" 1357081713 5396 4eb260dac60f150ae608d45252853090 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/abntex2/abntex2-alf.bst" 1543183680 60064 0819ac8568f9a482510a46e3a8a6f605 ""
-  "main.aux" 1764471129.31273 16796 8a196079108241a5d814db1f8d50d7d9 "pdflatex"
+  "main.aux" 1764527596.46265 21508 7c58ee3f72a837f5d88513f7b6184206 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1764471127.6919 "/home/catarina/Downloads/Mapeamento_de_Perfis_de_Mulheres_com_Foco_na_Escolha_por_Carreiras_em_STEM (2)/main.tex" "main.pdf" "main" 1764471129.60773 0
+["pdflatex"] 1764527594.02569 "/home/catarina/Downloads/Mapeamento_de_Perfis_de_Mulheres_com_Foco_na_Escolha_por_Carreiras_em_STEM (2)/main.tex" "main.pdf" "main" 1764527596.75808 0
   "/etc/texmf/web2c/texmf.cnf" 1724192440.50648 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/catarina/Downloads/Mapeamento_de_Perfis_de_Mulheres_com_Foco_na_Escolha_por_Carreiras_em_STEM (2)/main.tex" 1764471125.83897 71633 9b7322137b64c72165cd68c4dc637503 ""
+  "/home/catarina/Downloads/Mapeamento_de_Perfis_de_Mulheres_com_Foco_na_Escolha_por_Carreiras_em_STEM (2)/main.tex" 1764527591.3397 87780 dd926191ea6800f14a543f4419b74f82 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1136768653 3584 402da0b29eafbad07963b1224b222f18 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm" 1136768653 3584 13049b61b922a28b158a38aeff75ee9b ""
@@ -88,6 +88,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty" 1705352648 5048 425739d70251273bf93e3d51f3c40048 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/report.cls" 1705352648 23203 f5d913095ece2233436f0e628619cd37 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo" 1705352648 8449 f07039d8e4e89f21078d9b5137579bfc ""
+  "/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty" 1579038678 6078 f1cb470c9199e7110a27851508ed7a5c ""
   "/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty" 1696191071 56128 c2ccf1a29d78c33bc553880402e4fb9a ""
   "/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty" 1696191071 72619 ee90b6612147680fd73c3b1406a74245 ""
   "/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty" 1645391520 7418 021d7c4eb11bde94592761855a3d046e ""
@@ -142,15 +143,18 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1763552785.39425 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1763552820 8212325 683b3bb4efaf094db51f769ed24819a6 ""
   "feminino_stem/shap_feminino_future_stem.png" 1763568232 182063 252084cc8b85c09c385f1434604bb194 ""
+  "geral_stem/aranha_geral_gender_stem.png" 1763568232 509598 8866c9c8e1570153267c5f4bad1acd3e ""
+  "geral_stem/cotovelo_geral_gender_stem.png" 1763568232 116441 7d03a98d955ec145ad6532715ae665b0 ""
+  "geral_stem/dendrograma_geral_gender_stem.png" 1763568232 145041 964d9b7d4cfde377a36b10cb58c2705f ""
   "geral_stem/shap_geral_gender_stem.png" 1763568232 220512 e2f59fb6385f4dd70aa8cd9c512e7a14 ""
   "graficos_exploratoria/grafico_courseareageneral.png" 1763568232 82875 c8a8ddfb9b4697f16017c2246ed19ef0 ""
   "graficos_exploratoria/grafico_coursename.png" 1763568232 167367 2bf77d49ecefd75fcfaf920ea482ff26 ""
   "graficos_exploratoria/grafico_gender.png" 1763568232 81102 1a9f909cf9e04ef13437fa3f10c6eed2 ""
-  "main.aux" 1764471129.31273 16796 8a196079108241a5d814db1f8d50d7d9 "pdflatex"
-  "main.bbl" 1764471127.68971 12018 c95be204f7c2e4494ce389d67afb76f7 "bibtex main"
-  "main.out" 1764471129.31473 5999 4c1f9250350f30f0d49aeed5fd4438cb "pdflatex"
-  "main.tex" 1764471125.83897 71633 9b7322137b64c72165cd68c4dc637503 ""
-  "main.toc" 1764471129.31603 3609 46d5025c0fea16e2c44f2ce362889433 "pdflatex"
+  "main.aux" 1764527596.46265 21508 7c58ee3f72a837f5d88513f7b6184206 "pdflatex"
+  "main.bbl" 1764527594.02196 12018 c95be204f7c2e4494ce389d67afb76f7 "bibtex main"
+  "main.out" 1764527596.46565 7598 74515e0323965c0af2ab61ea278eed23 "pdflatex"
+  "main.tex" 1764527591.3397 87780 dd926191ea6800f14a543f4419b74f82 ""
+  "main.toc" 1764527596.46668 4272 d5fb5292e58020d0acc0d4dae4a86da4 "pdflatex"
   "masculino_stem/shap_masculino_future_stem.png" 1763568232 205066 146c7c6b8b451bad608608acce3a5804 ""
   (generated)
   "main.aux"
