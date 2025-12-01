@@ -14,30 +14,34 @@
 \contentsline {section}{\numberline {2.2}Análise de Dados na Educação e Estudos sobre Perfil de Estudantes}{11}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Técnicas de Agrupamento como Estratégia de Mapeamento de Perfis}{12}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Explicabilidade e Interpretabilidade em Modelos de AM}{18}{section.2.4}%
-\contentsline {chapter}{\numberline {3}Metodologia}{22}{chapter.3}%
-\contentsline {chapter}{\numberline {4}RESULTADOS E DISCUSSÕES}{25}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Caracterização da Amostra e Análise Exploratória dos Dados}{25}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Estrutura das perguntas}{26}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Modelo de Classificação e Análise das Variáveis mais Importantes}{28}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}analise com ambos os generos}{28}{subsection.4.2.1}%
-\contentsline {subsubsection}{Interpretação do Padrão de Cores no Gráfico de SHAP}{31}{section*.16}%
-\contentsline {subsubsection}{Sentimento de Exclusão em Tecnologia como Fator Mais Relevante}{31}{section*.17}%
-\contentsline {subsubsection}{Restrição de Atividades por Motivo de Gênero}{31}{section*.18}%
-\contentsline {subsubsection}{Opinião sobre Profissões por Gênero}{32}{section*.19}%
-\contentsline {subsubsection}{Incentivo Familiar: Estudo para Meninas e Trabalho para Meninos}{32}{section*.20}%
-\contentsline {subsubsection}{Interesse em Seguir Carreira em STEM}{32}{section*.21}%
-\contentsline {subsection}{\numberline {4.2.2}Análise Comparativa por Gênero: Modelos para Mulheres e Homens}{33}{subsection.4.2.2}%
-\contentsline {subsubsection}{Similaridades Entre os Modelos: Interesse Prévio em STEM}{33}{section*.22}%
-\contentsline {subsubsection}{Sentimento de “STEM Não é Para Mim”}{33}{section*.23}%
-\contentsline {subsubsection}{Diversidade dos Gráficos e Diferença no Volume de Respostas}{33}{section*.24}%
-\contentsline {subsubsection}{Estereótipos de Profissão e Interesse Masculino em STEM}{34}{section*.25}%
-\contentsline {subsubsection}{Sentimento de Exclusão: Presente no Modelo Masculino, Ausente no Feminino}{34}{section*.26}%
-\contentsline {subsubsection}{Admiração por Professores de Exatas}{34}{section*.27}%
-\contentsline {section}{\numberline {4.3}Formação e Interpretação dos Grupos}{34}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Construção da Estrutura Hierárquica}{36}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Determinação do Número Ideal de Clusters}{36}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Estrutura e Tamanho dos Clusters}{36}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Interpretação dos Perfis Identificados}{37}{subsection.4.3.4}%
-\contentsline {subsection}{\numberline {4.3.5}Síntese Interpretativa dos Grupos}{39}{subsection.4.3.5}%
-\contentsline {subsection}{\numberline {4.3.6}Visualização Comparativa dos Perfis por Cluster}{39}{subsection.4.3.6}%
+\contentsline {chapter}{\numberline {3}Metodologia}{23}{chapter.3}%
+\contentsline {chapter}{\numberline {4}RESULTADOS E DISCUSSÕES}{26}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Caracterização da Amostra e Análise Exploratória dos Dados}{26}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Estrutura das perguntas}{27}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Modelo de Classificação e Análise das Variáveis mais Importantes}{29}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Análise com ambos os gêneros}{29}{subsection.4.2.1}%
+\contentsline {subsubsection}{Interpretação do Padrão de Cores no Gráfico de SHAP}{32}{section*.16}%
+\contentsline {subsubsection}{Sentimento de Exclusão em Tecnologia (\textit {feelingExcludedTech})}{32}{section*.17}%
+\contentsline {subsubsection}{Restrição de Atividades por Motivo de Gênero (\textit {activityGenderRestriction})}{32}{section*.18}%
+\contentsline {subsubsection}{Opinião sobre Profissões por Gênero (\textit {professionsByGenderOpinion})}{32}{section*.19}%
+\contentsline {subsubsection}{Percepção de que STEM Nunca Foi Para Mim (\textit {feltSTEMNotForMeEver})}{33}{section*.20}%
+\contentsline {subsubsection}{Interesse em Carreira STEM (\textit {stemCareerInterest})}{33}{section*.21}%
+\contentsline {subsubsection}{Admiração por Professores (\textit {admiredExactTeachersGender})}{33}{section*.22}%
+\contentsline {subsubsection}{Interesse Escolar por Gênero (\textit {schoolExactInterestByGender})}{33}{section*.23}%
+\contentsline {subsubsection}{Percepção do Desempenho Escolar Familiar (\textit {familySchoolPerformanceValue})}{33}{section*.24}%
+\contentsline {subsubsection}{Resumo}{34}{section*.25}%
+\contentsline {subsection}{\numberline {4.2.2}Análise Comparativa por Gênero: Modelos para Mulheres e Homens}{34}{subsection.4.2.2}%
+\contentsline {subsubsection}{Similaridades Entre os Modelos: Interesse Prévio em STEM}{34}{section*.26}%
+\contentsline {subsubsection}{Sentimento de “STEM Não é Para Mim”}{34}{section*.27}%
+\contentsline {subsubsection}{Diversidade dos Gráficos e Diferença no Volume de Respostas}{35}{section*.28}%
+\contentsline {subsubsection}{Estereótipos de Profissão e Interesse Masculino em STEM}{35}{section*.29}%
+\contentsline {subsubsection}{Sentimento de Exclusão: Presente no Modelo Masculino, Ausente no Feminino}{35}{section*.30}%
+\contentsline {subsubsection}{Admiração por Professores de Exatas}{35}{section*.31}%
+\contentsline {section}{\numberline {4.3}Formação e Interpretação dos Grupos}{36}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Construção da Estrutura Hierárquica}{37}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Determinação do Número Ideal de Clusters}{37}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Estrutura e Tamanho dos Clusters}{38}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Interpretação dos Perfis Identificados}{38}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.5}Síntese Interpretativa dos Grupos}{40}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}Visualização Comparativa dos Perfis por Cluster}{40}{subsection.4.3.6}%
 \contentsline {chapter}{\numberline {5}CONSIDERAÇÕES FINAIS}{43}{chapter.5}%

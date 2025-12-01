@@ -254,40 +254,21 @@ tamanhos.
 
 {Método de Ward (mínima variância)}
 
-Além das medidas clássicas, o método de Ward constitui um tipo distinto de ligação, 
-baseado na minimização da variância interna dos clusters. Segundo 
-Randriamihamison et al.\ (2020), o método Ward (ou Ward2) seleciona, a cada etapa, 
-a fusão de clusters que acarreta o menor aumento na soma das distâncias 
-quadráticas intra-cluster.
+Em contraste com esses critérios baseados em distâncias diretas, o método de Ward utiliza outro princípio para decidir a fusão de clusters. Segundo Randriamihamison et al. (2021), o método adota uma perspectiva de minimização da variância interna, avaliando, a cada etapa, qual fusão provoca o menor aumento na soma das dispersões intracluster (within-cluster sum of squares). Assim, em vez de observar apenas pares específicos de pontos ou a média entre eles, o algoritmo considera o efeito global que uma fusão teria na homogeneidade e na compactação dos grupos.
 
-Supondo que $C_i$ e $C_j$ sejam candidatos à fusão, o critério de Ward é expresso como:
+Enquanto os métodos clássicos podem favorecer estruturas alongadas (single linkage), muito compactas (complete linkage) ou instáveis (centroid linkage), o método de Ward produz clusters mais equilibrados, coesos e com baixa variabilidade interna, justamente por otimizar continuamente a qualidade da partição. Como destacam Randriamihamison et al. (2021), essa característica confere ao método maior estabilidade e interpretabilidade, além de dendrogramas mais consistentes, especialmente em conjuntos de dados onde a homogeneidade dos grupos é um objetivo central.
 
-\begin{equation}
-    \Delta(C_i, C_j) =
-    \frac{n_i n_j}{n_i + n_j} \, \| m_i - m_j \|^2,
-\end{equation}
+Em síntese, o método de Ward difere fundamentalmente dos demais porque não se apoia apenas em medições de distância entre objetos ou centróides, mas em um critério estatístico de compacidade mínima, funcionando como um processo de otimização que privilegia a formação de clusters internamente homogêneos.
 
-onde $\Delta(C_i, C_j)$ representa o aumento na soma das variâncias internas 
-(\emph{within-cluster sum of squares}) decorrente da fusão. O método seleciona 
-o par $(C_i, C_j)$ que minimiza esse valor.
+A determinação do número adequado de clusters é uma etapa fundamental em algoritmos de agrupamento, especialmente naqueles que exigem a definição prévia desse parâmetro. Entre os métodos mais utilizados para essa finalidade, destaca-se o Método do Cotovelo (Elbow Method), cuja popularidade se deve à sua simplicidade e caráter visual.
 
-O método Ward difere dos demais por não basear a ligação em distâncias diretas 
-entre pontos ou médias aritméticas, mas sim na otimização da compactação dos 
-clusters, sendo especialmente útil quando se deseja obter grupos homogêneos e 
-com pequena variabilidade interna.
+Como descrito por Shi et al. (2021), o Método do Cotovelo baseia-se em observar como a distorção interna dos clusters — isto é, o grau de compactação dos grupos — se comporta à medida que o número de clusters aumenta. Em geral, adicionar mais clusters tende a tornar cada grupo mais homogêneo, reduzindo o erro interno. No entanto, essa redução não é constante: após certo ponto, criar novos clusters deixa de gerar uma melhoria significativa.
 
-A escolha do número adequado de clusters é um passo essencial em algoritmos de agrupamento. Um dos critérios mais utilizados para essa finalidade é o \textit{Elbow Method}, o qual, conforme descrito no artigo \textit{``A quantitative discriminant method
-of elbow point for the optimal number
-of clusters in clustering algorithm''}, baseia-se na avaliação da soma dos erros quadráticos (\textit{Sum of Squared Errors} – SSE) em função do número de clusters $k$. Para cada partição gerada, calcula-se a variância intra-cluster como a soma das distâncias quadráticas entre cada observação e o centróide de seu agrupamento. Formalmente, para um cluster $C_j$ com $n_j$ elementos e centróide $\mu_j$, tem-se
-\[
-\text{SSE}(C_j) = \sum_{i=1}^{n_j} \| x_i - \mu_j \|^2 ,
-\]
-e a soma total da variância intra-cluster para $k$ clusters é dada por
-\[
-\text{SSE}(k) = \sum_{j=1}^{k} \text{SSE}(C_j).
-\]
-O método consiste em plotar $\text{SSE}(k)$ contra o número de clusters e identificar o ponto em que a redução de SSE deixa de ser substancial, formando uma inflexão visual conhecida como ``cotovelo''. Como ressaltado em \cite{ElbowSSEArticle}, esse ponto representa um equilíbrio entre a compactação dos clusters e a complexidade do modelo, sendo interpretado como o número apropriado de grupos para a estrutura dos dados.
+O Método do Cotovelo explora exatamente esse comportamento. Ele consiste em executar o algoritmo de clustering para diferentes valores de k e, em seguida, construir um gráfico que relaciona o número de clusters com a medida de erro. A interpretação visual busca identificar um ponto de inflexão — o “cotovelo” — onde a curva deixa de apresentar quedas acentuadas e passa a diminuir mais lentamente. Esse ponto representa um equilíbrio entre ganho de qualidade e simplicidade do modelo, sendo interpretado como o número apropriado de clusters para a estrutura dos dados.
 
+Shi et al. (2021) ressaltam, porém, que essa identificação depende da clareza do formato da curva. Quando o gráfico apresenta um cotovelo evidente, a escolha é relativamente simples; entretanto, quando a curva é muito suave, a identificação do ponto ideal torna-se subjetiva e pode variar entre analistas. Essa limitação motivou os autores a propor um método quantitativo alternativo para detectar automaticamente o cotovelo, evidenciando que, apesar de amplamente utilizado, o Método do Cotovelo nem sempre fornece uma indicação precisa em situações de baixa contrastividade na curva.
+
+Em síntese, o Método do Cotovelo é uma ferramenta intuitiva e amplamente empregada para estimar o número de clusters, fundamentando-se na análise visual da redução do erro. No entanto, como discutem Shi et al. (2021), sua natureza subjetiva pode limitar sua eficácia em cenários em que o formato da curva não apresenta um ponto de inflexão claramente definido.
 
 
 \begin{comment}
@@ -392,7 +373,23 @@ Breiman (2001) descreve um procedimento simples e eficiente para medir a import�
 
 Embora o Random Forest forneça uma estimativa interna de importância das variáveis por meio do aumento percentual do erro \textit{out-of-bag} (OOB), esse mecanismo apresenta uma visão essencialmente global e agregada da relevância dos atributos. Para aprofundar a compreensão sobre como cada variável influencia as predições, tanto no nível global quanto no nível individual, é possível combinar o modelo Random Forest com a metodologia SHAP, potencializando a interpretabilidade. Conforme discutido por Nanal (2024) e fundamentado na teoria dos valores de Shapley, os valores SHAP quantificam a contribuição marginal de cada variável para a predição específica de uma instância, permitindo decompor a saída do modelo de forma aditiva e interpretável.
 
-No contexto deste trabalho, após o treinamento do modelo Random Forest, os valores SHAP são calculados utilizando o \textit{TreeExplainer}, um explicador otimizado para modelos baseados em árvores. O \textit{TreeExplainer} foi desenvolvido por Lundberg e colaboradores como um algoritmo especializado capaz de explorar diretamente a estrutura hierárquica e os caminhos decisórios das árvores do modelo. Em vez de estimar contribuições por meio de aproximações combinatórias — que possuem custo computacional exponencial — o \textit{TreeExplainer} utiliza algoritmos polinomiais que percorrem as regras de divisão das árvores, permitindo calcular contribuições individuais de forma rápida, precisa e matematicamente consistente. Assim, ele preserva as propriedades fundamentais dos valores de Shapley (como eficiência, simetria e aditividade), ao mesmo tempo em que torna viável a explicação de florestas com centenas de árvores. Enquanto a importância tradicional do Random Forest identifica quais atributos mais influenciam o modelo de maneira global, os valores SHAP permitem observar não apenas a magnitude dessa influência, mas também seu sentido (positivo ou negativo), bem como possíveis interações entre variáveis. Dessa forma, a combinação entre ambos fornece uma análise mais completa: primeiro identifica-se \textit{quais} variáveis são importantes; em seguida, com SHAP, investiga-se \textit{como} elas atuam na previsão.
+No contexto deste trabalho, após o treinamento do modelo Random Forest, os valores SHAP são calculados utilizando o TreeExplainer, um método de explicação otimizado especificamente para modelos baseados em árvores. Proposto por Lundberg et al. (2020), o TreeExplainer constitui um avanço significativo na interpretabilidade desses modelos ao permitir o cálculo exato de valores de Shapley em tempo polinomial, explorando diretamente a estrutura hierárquica das árvores de decisão que compõem o algoritmo 
+
+lundberg2020
+
+. Enquanto o cálculo tradicional de valores de Shapley exige considerar todas as possíveis combinações de atributos — um problema classicamente NP-difícil, inviável para modelos reais — o TreeExplainer reformula esse processo ao colapsar o somatório combinatorial em operações estruturadas sobre os caminhos e folhas das árvores. Dessa forma, o método substitui aproximações estocásticas por um algoritmo determinístico capaz de computar explicações exatas, consistentes e localmente fiéis, preservando integralmente as propriedades fundamentais dos valores de Shapley, como eficiência, simetria e monotonicidade.
+
+Essa eficiência decorre da capacidade do algoritmo de rastrear, ao longo dos caminhos decisórios, a proporção de subconjuntos de atributos que fluem para cada folha, o que permite atribuir corretamente a contribuição marginal de cada variável para a predição. Lundberg et al. demonstram que, ao explorar essa estrutura, o TreeExplainer supera limitações de abordagens anteriores, como métodos heurísticos específicos para árvores (por exemplo, Saabas), que sofrem de inconsistência e distorcem a importância de variáveis conforme sua profundidade na árvore, e métodos modelo-agnósticos baseados em amostragem, que apresentam alta variância e custos computacionais elevados 
+
+lundberg2020
+
+. Assim, o TreeExplainer oferece explicações precisas mesmo em modelos compostos por centenas de árvores, como florestas aleatórias, tornando possível interpretar de forma confiável a contribuição individual de cada atributo para cada previsão.
+
+Além disso, enquanto as medidas tradicionais de importância do Random Forest fornecem apenas uma visão global das variáveis mais relevantes — frequentemente influenciada por métricas internas como ganho ou Gini — os valores SHAP calculados pelo TreeExplainer permitem compreender não apenas a magnitude, mas também o sentido (positivo ou negativo) e até interações locais entre variáveis em cada instância analisada. Lundberg et al. mostram que essa abordagem produz explicações que refletem com maior fidelidade o comportamento real do modelo e revelam padrões que métodos globais não conseguem capturar, como efeitos raros, interações específicas e subgrupos de dados com relações particulares entre atributos e predições 
+
+lundberg2020
+
+. Dessa forma, a combinação entre a importância global tradicional e os valores SHAP — calculados de forma eficiente e consistente pelo TreeExplainer — fornece uma análise interpretativa mais completa e robusta: primeiro identifica-se quais variáveis são importantes para o modelo; em seguida, investiga-se como elas influenciam cada previsão individualmente.
 
 Para tornar esse processo mais claro, o fluxo operacional pode ser representado pelo pseudocódigo a seguir, que descreve a integração entre Random Forest e SHAP utilizada neste estudo:
 
@@ -447,19 +444,7 @@ A definição do número ideal de grupos será feita com base em métricas de av
 
 
 %analise-diferencial
-
-Após a definição dos clusters, será realizada uma análise estatística inferencial com o objetivo de verificar se há diferenças estatisticamente significativas entre os grupos formados. Para isso, serão aplicados testes como:
-
-\begin{itemize}
-    \item \textbf{Teste do qui-quadrado de independência}, para verificar associações entre variáveis categóricas (ex: área do curso e grupo de perfil);
-    
-    \item \textbf{Análise de variância (ANOVA)} ou o \textbf{teste de Kruskal-Wallis} (caso os dados não atendam aos pressupostos de normalidade), para comparar médias de variáveis numéricas entre os clusters;
-    
-    \item \textbf{Correlação de Spearman}, quando pertinente, para avaliar relações entre variáveis ordinais.
-\end{itemize}
-
-Essas análises permitirão não apenas validar os agrupamentos encontrados, mas também oferecer uma compreensão mais profunda das distinções entre os perfis de estudantes, destacando quais fatores contribuem mais significativamente para as escolhas de carreira no ensino superior.
-
+Após a definição dos grupos, realizou-se uma análise comparativa detalhada entre os clusters formados, com o objetivo de identificar padrões e diferenças relevantes nas variáveis investigadas. Inicialmente, validou‑se a escolha do corte em dois grupos a partir da inspeção do dendrograma e da aplicação do método do cotovelo, sendo ainda verificada a consistência da solução pelo índice de silhueta. Em seguida, procedeu‑se à caracterização descritiva de cada cluster por meio de tabelas de frequência e medidas-resumo (médias, medianas e dispersões) e por visualizações explicativas (gráficos de barras, boxplots e perfis de variáveis), que permitem comparar a composição e a intensidade das respostas entre os grupos. Foram examinadas as distribuições de gênero, interesse por STEM, sensação de exclusão em tecnologia e demais indicadores socioeconômicos e educacionais, destacando-se as variáveis cuja diferença entre clusters se mostrava mais pronunciada. Por fim, os achados dos agrupamentos foram integrados com as análises de interpretabilidade (valores SHAP) obtidas no modelo preditivo, de modo a relacionar as características que definem os perfis identificados com as variáveis que mais contribuem para as predições do modelo. Essa combinação de evidências quantitativas e gráficas fundamentou a interpretação dos perfis e a discussão das possíveis implicações educacionais e sociais.
 \chapter{RESULTADOS E DISCUSSÕES}
 \section{Caracterização da Amostra e Análise Exploratória dos Dados}
 
@@ -581,16 +566,20 @@ Não
 
 \section{Modelo de Classificação e Análise das Variáveis mais Importantes}
 
-\subsection{analise com ambos os generos}
+\subsection{Análise com ambos os gêneros}
 
 Para esta etapa da análise, foi realizada uma seleção prévia de variáveis, mantendo-se apenas aquelas diretamente relacionadas a STEM e aos fatores identificados na literatura como influenciadores do interesse — ou da falta de interesse — por carreiras nessa área. Essa filtragem inicial teve o objetivo de garantir que o modelo analisasse exclusivamente os elementos associados ao interesse em STEM, permitindo que a interpretação com SHAP refletisse apenas esses fatores específicos, sem interferência de variáveis externas ao fenômeno investigado. Além disso, considerando o número reduzido de respondentes (n = 88), optou-se por trabalhar com apenas oito variáveis, assegurando maior estabilidade nas estimativas e evitando sobreajuste.
 
-Após a definição desse subconjunto de variáveis, o conjunto de dados é carregado e a variável-alvo gender é separada das demais variáveis explicativas selecionadas. Em seguida, os dados são divididos em treino e teste, e o modelo de Random Forest é ajustado com base nesse conjunto filtrado. Uma vez treinado, o modelo é interpretado por meio dos valores SHAP, aplicados sobre as amostras de teste, permitindo identificar de forma transparente como cada um desses fatores relacionados ao interesse por STEM contribui para as predições da variável gender.
+Após a definição desse subconjunto de variáveis, o conjunto de dados foi carregado e a variável-alvo \textit{gender} foi separada das demais variáveis explicativas selecionadas. Em seguida, os dados foram divididos em treino e teste, e um modelo de \textit{Random Forest Classifier} foi ajustado com base nesse conjunto filtrado, com o objetivo de predizer a probabilidade de cada respondente pertencer ao gênero feminino. 
+
+Uma vez treinado, o modelo foi interpretado por meio dos valores SHAP aplicados sobre as amostras de teste, permitindo identificar de forma transparente como cada um desses fatores relacionados ao interesse por STEM contribui para as predições da variável \textit{gender}. No gráfico de SHAP resultante, valores mais vermelhos indicam maior probabilidade de o respondente ser do gênero feminino, enquanto valores mais azuis indicam menor probabilidade, ou seja, maior associação com o gênero masculino.
+
+A análise inicial foi conduzida utilizando a base completa de respondentes, sem separação por gênero. O gráfico de SHAP oferece uma visão global dos principais fatores que distinguem respondentes do gênero feminino e masculino, permitindo observar tanto a relevância relativa de cada variável quanto a direção de seus efeitos.
 
 \begin{figure}[h!]
     \centering
     \caption{Legenda}
-    \includegraphics[width=0.9\textwidth]{geral_stem/shap_geral_gender_stem.png}
+    \includegraphics[width=0.9\textwidth]{geral_stem/shap2.png}
     \label{fig:shap_geral_gender}
 \end{figure}
 
@@ -661,52 +650,17 @@ Após a definição desse subconjunto de variáveis, o conjunto de dados é carr
 
 \begin{table}[H]
 \centering
-\caption{Tabela de tradução da variável teacherPerformanceValue}
+\caption{Tabela de tradução da variável feltSTEMNotForMeEver}
 \begin{tabular}{p{6cm} p{3cm} p{3cm}}
 \hline
 \textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
 \hline
-\raggedright maioria-valorizava & 0 & 0.00 \\
-\raggedright alguns-valorizavam & 1 & 0.25 \\
-\raggedright tratavam-neutro & 2 & 0.50 \\
-\raggedright poucos-valorizavam & 3 & 0.75 \\
-\raggedright desempenho-ignorado & 4 & 1.00 \\
+\raggedright nao-nunca-senti & 0 & 0.00 \\
+\raggedright nunca-pensei & 1 & 0.50 \\
+\raggedright sim-ja-senti & 2 & 1.00 \\
 \hline
 \end{tabular}
-\label{tab:traducao_teacherPerformanceValue}
-\end{table}
-
-\begin{table}[H]
-\centering
-\caption{Tabela de tradução da variável preCollegeExactInterestLevel}
-\begin{tabular}{p{6cm} p{3cm} p{3cm}}
-\hline
-\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
-\hline
-\raggedright muito-interesse & 0 & 0.00 \\
-\raggedright algum-interesse & 1 & 0.33 \\
-\raggedright pouco-interesse & 2 & 0.67 \\
-\raggedright nenhum-interesse & 3 & 1.00 \\
-\hline
-\end{tabular}
-\label{tab:traducao_preCollegeExactInterestLevel}
-\end{table}
-
-\begin{table}[H]
-\centering
-\caption{Tabela de tradução da variável familyStudyIncentive}
-\begin{tabular}{p{6cm} p{3cm} p{3cm}}
-\hline
-\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
-\hline
-\raggedright 1 & 0 & 0.00 \\
-\raggedright 2 & 1 & 0.25 \\
-\raggedright 3 & 2 & 0.50 \\
-\raggedright 4 & 3 & 0.75 \\
-\raggedright 5 & 4 & 1.00 \\
-\hline
-\end{tabular}
-\label{tab:traducao_familyStudyIncentive}
+\label{tab:traducao_feltSTEMNotForMeEver}
 \end{table}
 
 \begin{table}[H]
@@ -728,45 +682,90 @@ Após a definição desse subconjunto de variáveis, o conjunto de dados é carr
 
 \begin{table}[H]
 \centering
-\caption{Tabela de tradução da variável childhoodHobbiesTime}
+\caption{Tabela de tradução da variável admiredExactTeachersGender}
 \begin{tabular}{p{6cm} p{3cm} p{3cm}}
 \hline
 \textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
 \hline
-\raggedright nao-raremente & 0 & 0.00 \\
-\raggedright raramente-responsabilidades & 1 & 0.33 \\
-\raggedright as-vezes & 2 & 0.67 \\
-\raggedright sim-tempo-apoio & 3 & 1.00 \\
+\raggedright ambos & 0 & 0.00 \\
+\raggedright feminino & 1 & 1.00 \\
+\raggedright masculino & 2 & 2.00 \\
+\raggedright nenhum & 3 & 3.00 \\
 \hline
 \end{tabular}
-\label{tab:traducao_childhoodHobbiesTime}
+\label{tab:traducao_admiredExactTeachersGender}
 \end{table}
 
-A análise inicial foi conduzida utilizando a base completa de respondentes, sem separação por gênero, tomando como variável alvo o próprio gênero (0 = feminino, 1 = masculino). O gráfico de SHAP resultante oferece uma visão global dos principais fatores que distinguem os respondentes do gênero feminino e masculino, permitindo observar tanto a relevância relativa de cada variável quanto a direção de seus efeitos.
+\begin{table}[H]
+\centering
+\caption{Tabela de tradução da variável schoolExactInterestByGender}
+\begin{tabular}{p{6cm} p{3cm} p{3cm}}
+\hline
+\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
+\hline
+\raggedright meninas & 0 & 0.00 \\
+\raggedright meninos & 1 & 1.00 \\
+\raggedright nao-diferenca & 2 & 2.00 \\
+\hline
+\end{tabular}
+\label{tab:traducao_schoolExactInterestByGender}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabela de tradução da variável familySchoolPerformanceValue}
+\begin{tabular}{p{6cm} p{3cm} p{3cm}}
+\hline
+\textbf{Valor Original} & \textbf{Codificado} & \textbf{Normalizado} \\
+\hline
+\raggedright nao-demonstrava-interesse & 0 & 0.00 \\
+\raggedright valorizava-eventualmente & 1 & 0.33 \\
+\raggedright valorizava-moderadamente & 2 & 0.67 \\
+\raggedright valorizava-muito & 3 & 1.00 \\
+\hline
+\end{tabular}
+\label{tab:traducao_familySchoolPerformanceValue}
+\end{table}
 
 \subsubsection{Interpretação do Padrão de Cores no Gráfico de SHAP}
 
-Nos gráficos de interpretação de SHAP, os pontos são coloridos conforme o valor original da feature: valores altos são representados na cor vermelha, enquanto valores baixos são representados em azul. No caso da variável alvo “gênero”, valores baixos correspondem ao gênero feminino e valores altos ao masculino. Dessa forma, pontos azuis no gráfico indicam perfis associados ao público feminino, enquanto pontos vermelhos representam perfis associados ao público masculino. Essa distinção visual permite compreender a direção das relações entre as variáveis explicativas e a probabilidade de o modelo predizer um determinado gênero.
+Nos gráficos de interpretação de SHAP, os pontos são coloridos conforme o valor original da feature: valores altos são representados na cor vermelha, enquanto valores baixos são representados em azul. No caso da variável alvo “gênero”, valores mais vermelhos indicam maior probabilidade de o respondente ser do gênero feminino, enquanto pontos mais azuis indicam maior probabilidade de pertencer ao gênero masculino. Essa distinção visual permite compreender a direção das relações entre as variáveis explicativas e a probabilidade de o modelo predizer um determinado gênero.
 
-\subsubsection{Sentimento de Exclusão em Tecnologia como Fator Mais Relevante}
+\subsubsection{Sentimento de Exclusão em Tecnologia (\textit{feelingExcludedTech})}
 
-A variável mais importante identificada pelo modelo para diferenciar pessoas de gêneros distintos foi o \textit{sentimento de exclusão em áreas de tecnologia}. Os valores de SHAP indicam que valores mais altos dessa variável (representando maior sensação de exclusão) contribuem para aumentar a probabilidade de o respondente ser classificado como feminino, enquanto valores baixos estão principalmente associados ao público masculino. Esse resultado é compatível com a literatura especializada, que aponta que meninas e mulheres tendem a vivenciar com maior frequência percepções de exclusão, insegurança ou desestímulo relacionados a ambientes de tecnologia e STEM.
+Esta foi a variável mais relevante para distinguir gêneros. Valores mais altos de \textit{feelingExcludedTech} estão fortemente associados ao gênero feminino, indicando que meninas relatam maior sensação de exclusão em áreas de tecnologia. Valores baixos da variável tendem a associar-se ao público masculino, o que reforça achados da literatura sobre experiências diferenciadas de inclusão em STEM.
 
-\subsubsection{Restrição de Atividades por Motivo de Gênero}
+\subsubsection{Restrição de Atividades por Motivo de Gênero (\textit{activityGenderRestriction})}
 
-A segunda variável mais relevante corresponde à ocorrência de restrições de atividades devido ao gênero. Valores altos dessa variável --- indicando que a pessoa já deixou de realizar alguma atividade por questões de gênero --- foram mais frequentes entre respondentes do gênero feminino. Entretanto, observou-se que parte dos respondentes masculinos também sinalizou valores altos, o que pode indicar uma interpretação distinta da pergunta ou uma compreensão mais abrangente sobre o conceito de restrição. Esse comportamento diferencia-se de achados já consolidados na literatura e aponta para possíveis ambivalências na interpretação da questão.
+Valores altos indicam que a pessoa já deixou de realizar atividades por questões de gênero. Observa-se maior frequência de respostas elevadas entre meninas, embora alguns meninos também reportem valores altos, possivelmente por interpretação mais ampla da pergunta. Essa variável destaca diferenças de percepção sobre barreiras sociais relacionadas a gênero.
 
-\subsubsection{Opinião sobre Profissões por Gênero}
+\subsubsection{Opinião sobre Profissões por Gênero (\textit{professionsByGenderOpinion})}
 
-A terceira variável de maior importância foi a opinião acerca da existência de profissões consideradas mais adequadas a um gênero específico. Valores elevados --- indicando maior concordância com estereótipos de gênero em profissões --- foram mais associados ao público masculino, enquanto valores baixos --- indicando menor concordância --- foram mais associados ao público feminino. Esse resultado reforça achados prévios de que mulheres tendem a rejeitar mais intensamente concepções estereotipadas sobre papéis profissionais.
+Valores altos refletem maior concordância com a ideia de que algumas profissões são mais adequadas a um gênero. Valores elevados foram mais associados a meninos, enquanto valores baixos foram mais frequentes entre meninas. Isso indica que meninas tendem a rejeitar estereótipos profissionais com maior intensidade.
 
-\subsubsection{Incentivo Familiar: Estudo para Meninas e Trabalho para Meninos}
+\subsubsection{Percepção de que STEM Nunca Foi Para Mim (\textit{feltSTEMNotForMeEver})}
 
-Outra variável de destaque refere-se ao \textit{incentivo familiar}. A análise dos valores de SHAP mostra que meninas tendem a relatar maior incentivo familiar para estudar, continuar os estudos e seguir trajetórias acadêmicas mais longas. Entre os meninos, entretanto, o incentivo familiar aparece mais frequentemente associado à expectativa de trabalhar cedo ou priorizar atividades laborais. Esse contraste reflete padrões socioculturais observados em diversas regiões do país, onde há uma tendência de atribuir às meninas maior responsabilidade escolar e, aos meninos, maior responsabilidade econômica. Assim, o modelo evidencia que o tipo de incentivo familiar recebido constitui um dos fatores relevantes na diferenciação entre os gêneros.
+Valores altos dessa variável indicam que o respondente já sentiu que STEM não era para ele/ela. No gráfico, observa-se que respostas elevadas estão concentradas no gênero feminino, sugerindo que meninas apresentam maior tendência a se afastar de STEM em algum momento, reforçando questões de pertencimento e autoconfiança.
 
-\subsubsection{Interesse em Seguir Carreira em STEM}
+\subsubsection{Interesse em Carreira STEM (\textit{stemCareerInterest})}
 
-A variável \textit{stemCareerInterest} surgiu como a sétima mais relevante para distinção entre os gêneros. Os valores de SHAP mostram que meninos tendem a responder com maior segurança e convicção quanto ao interesse em seguir carreira em STEM, frequentemente optando por respostas de concordância máxima. Já entre as meninas, observa-se maior hesitação: embora muitas indiquem interesse, poucas selecionam opções de certeza absoluta. Esse comportamento pode sugerir menor autoconfiança, menor percepção de pertencimento ou maior cautela ao declarar intenções futuras em áreas de STEM, o que está alinhado com evidências amplamente discutidas na literatura de gênero e educação em ciências.
+Esta variável mostra a disposição em seguir carreiras em STEM. Curiosamente, valores médios ou baixos aparecem mais associados a meninas, enquanto meninos tendem a indicar interesse mais intenso. Essa diferença pode refletir fatores de autoconfiança ou percepção de oportunidade em STEM.
+
+\subsubsection{Admiração por Professores (\textit{admiredExactTeachersGender})}
+
+Valores mais altos indicam que o respondente admira professores de um gênero específico. Pontos vermelhos (maior probabilidade de feminino) concentram-se em respostas indicando admiração por professores do genero feminino ou ambos, sugerindo que meninas tendem a reconhecer figuras de autoridade em diferentes gêneros, enquanto meninos apresentam tendencia a admirarem professores de exatas do genero masculino ou nenhum professor.
+
+\subsubsection{Interesse Escolar por Gênero (\textit{schoolExactInterestByGender})}
+
+Esta variável mede a percepção dos estudantes emrelação a quem possui maior interesse em certas matérias varia conforme o gênero. Meninas (pontos vermelhos) tendem a relatar que meninos possuem mais intreresse ou não veem diferença, enquanto os meninos tendem a relatar que meninas possuem mais interesse nessas disciplinas. 
+
+\subsubsection{Percepção do Desempenho Escolar Familiar (\textit{familySchoolPerformanceValue})}
+
+Valores mais altos dessa variável indicam maior valorização familiar do desempenho escolar. Muitas das meninas tendem a apresentar valores mais baixos dessa variavel, indicando que sentem menor valorização familiar em relação ao desempenho escolar, enquanto meninos tendem a apresentar valores mais altos, sugerindo maior reconhecimento familiar.
+
+\subsubsection{Resumo}
+
+A análise das oito variáveis selecionadas mostra um padrão consistente: características relacionadas à exclusão percebida, restrições por gênero, experiências passadas e incentivo familiar estão fortemente associadas ao gênero feminino. Valores mais vermelhos nos gráficos de SHAP permitem visualizar claramente essas tendências, enquanto meninos aparecem com pontos predominantemente azuis. Esse padrão reforça evidências da literatura sobre a influência de fatores sociais e psicológicos na decisão de meninas e meninos de se engajar em carreiras STEM.
 
 \subsection{Análise Comparativa por Gênero: Modelos para Mulheres e Homens}
 
@@ -786,7 +785,7 @@ O gráfico de SHAP masculino apresenta maior diversidade e espalhamento de ponto
 
 \subsubsection{Estereótipos de Profissão e Interesse Masculino em STEM}
 
-Entre os meninos, a variável relacionada à opinião sobre profissões por gênero aparece como a segunda mais importante. O SHAP indica que meninos interessados em STEM tendem a reproduzir menos estereótipos de gênero, enquanto aqueles com baixo interesse na área tendem a concordar mais com tais estereótipos. Esse achado sugere que visões mais igualitárias sobre papéis profissionais estão associadas a maior inclinação masculina para carreiras STEM.
+Entre os meninos, a variável relacionada à opinião sobre profissões por gênero aparece como a segunda mais importante. O SHAP indica que meninos interessados em STEM tendem a reproduzir menos estereótipos de gênero, enquanto aqueles com baixo interesse na área tendem a concordar mais com tais estereótipos.
 
 \subsubsection{Sentimento de Exclusão: Presente no Modelo Masculino, Ausente no Feminino}
 
@@ -794,16 +793,14 @@ Outro ponto relevante é que a variável \textit{feelingExcludedTech} aparece en
 
 \subsubsection{Admiração por Professores de Exatas}
 
-Na análise feminina, destaca-se a presença da variável \textit{admiredExactTeacherGender}, ausente entre as mais relevantes no modelo masculino. Esse resultado indica que meninas que se enxergam em STEM tendem a admirar tanto professores homens quanto professoras mulheres de áreas de exatas. Esse achado reforça a importância de modelos de referência --- especialmente figuras femininas --- para que meninas se sintam representadas e visualizem sua possibilidade de pertencimento em carreiras STEM.
-
-
+Na análise feminina, destaca-se a presença da variável \textit{admiredExactTeacherGender}, ausente entre as mais relevantes no modelo masculino. Esse resultado indica que meninas que se enxergam em STEM tendem a admirar tanto professores homens quanto professoras mulheres de áreas de exatas.
 
 
 
 \begin{figure}[h!]
     \centering
     \caption{Legenda}
-    \includegraphics[width=0.9\textwidth]{feminino_stem/shap_feminino_future_stem.png}
+    \includegraphics[width=0.9\textwidth]{feminino_stem/shap2.png}
     \label{fig:shap_feminino_future}
 \end{figure}
 
@@ -811,7 +808,7 @@ Na análise feminina, destaca-se a presença da variável \textit{admiredExactTe
 \begin{figure}[h!]
     \centering
     \caption{Legenda}
-    \includegraphics[width=0.9\textwidth]{masculino_stem/shap_masculino_future_stem.png}
+    \includegraphics[width=0.9\textwidth]{masculino_stem/shap2.png}
     \label{fig:shap_masculino_future}
 \end{figure}
 
@@ -819,10 +816,10 @@ Na análise feminina, destaca-se a presença da variável \textit{admiredExactTe
 
 \section{Formação e Interpretação dos Grupos}
 
-Após a identificação das oito variáveis mais relevantes pelo modelo Random Forest com SHAP na análise geral, procedeu-se à formação de grupos (clusters) utilizando a técnica de \textit{clustering} hierárquico. O objetivo desta etapa foi verificar se os respondentes apresentavam padrões semelhantes de comportamento ou percepção, e se esses padrões permitiam a formação de perfis distintos de estudantes. As oito \textit{features} utilizadas como base para essa etapa foram: \textit{feelingExcludedTech}, \textit{activityGenderRestriction}, \textit{professionsByGenderOpinion}, \textit{teacherPerformanceValue}, \textit{preCollegeExactInterestLevel}, \textit{familyStudyIncentive}, \textit{stemCareerInterest} e \textit{childhoodHobbiesTime}. Essas variáveis foram selecionadas por representarem os fatores mais importantes para diferenciação entre os gêneros na análise anterior, o que justificou sua utilização como descritores dos possíveis perfis.
+Após a identificação das oito variáveis mais relevantes pelo modelo Random Forest com SHAP na análise geral, procedeu-se à formação de grupos (\textit{clusters}) utilizando a técnica de \textit{clustering} hierárquico. O objetivo desta etapa foi verificar se os respondentes apresentavam padrões semelhantes de comportamento ou percepção, e se esses padrões permitiam a formação de perfis distintos de estudantes.
 
+As oito \textit{features} utilizadas como base para essa etapa foram: \textit{feelingExcludedTech}, \textit{activityGenderRestriction}, \textit{professionsByGenderOpinion}, \textit{feltSTEMNotForMeEver}, \textit{stemCareerInterest}, \textit{admiredExactTeachersGender}, \textit{schoolExactInterestByGender} e \textit{familySchoolPerformanceValue}. Essas variáveis foram selecionadas por representarem os fatores mais importantes para diferenciação entre os gêneros na análise anterior, o que justificou sua utilização como descritores dos possíveis perfis.
 \subsection{Construção da Estrutura Hierárquica}
-
 Para a formação dos grupos foi aplicado o método hierárquico aglomerativo com ligação de Ward, que busca minimizar a variância interna durante a junção dos grupos. O dendrograma resultante, apresentado na Figura \ref{fig:dendrograma}, permite visualizar a forma como as amostras se agrupam ao longo do processo de fusão, bem como as distâncias às quais as junções ocorrem.
 
 Ao observar o dendrograma, nota-se a presença de dois grandes blocos claramente separados, o que já indica a possibilidade de existência de dois grupos bem definidos entre os respondentes. A separação visual observada no gráfico sugere que os estudantes apresentam dois padrões predominantes de respostas nas variáveis analisadas.
@@ -830,7 +827,7 @@ Ao observar o dendrograma, nota-se a presença de dois grandes blocos claramente
     \centering
 
     \caption{Legenda}
-    \includegraphics[width=0.9\textwidth]{geral_stem/dendrograma_geral_gender_stem.png}
+    \includegraphics[width=0.9\textwidth]{geral_stem/dendrograma2.png}
     \label{fig:shap_masculino_future}
 \end{figure}
 \subsection{Determinação do Número Ideal de Clusters}
@@ -840,64 +837,57 @@ Para corroborar a indicação visual do dendrograma, aplicou-se o método do cot
 \begin{figure}[h!]
     \centering
     \caption{Legenda}
-    \includegraphics[width=0.9\textwidth]{geral_stem/cotovelo_geral_gender_stem.png}
+    \includegraphics[width=0.9\textwidth]{geral_stem/cotovelo2.png}
     \label{fig:shap_masculino_future}
 \end{figure}
 \subsection{Estrutura e Tamanho dos Clusters}
 
-Os dois grupos formados apresentam tamanhos distintos: o \textbf{Cluster 1} com 23 participantes e o \textbf{Cluster 2} com 65 participantes. A distribuição de gênero indica uma diferença marcante entre os grupos: o Cluster 1 possui maioria masculina (22 homens e apenas 1 mulher), enquanto o Cluster 2 apresenta uma composição mais equilibrada (27 mulheres e 38 homens). Esse desequilíbrio sugere, desde o início, que os clusters podem refletir diferenças de percepção associadas ao gênero e potencialmente relacionadas às barreiras ou estímulos vinculados ao interesse por STEM.
+Os dois grupos formados apresentam tamanhos distintos: o \textbf{Cluster 1} com 25 participantes e o \textbf{Cluster 2} com 63 participantes. A distribuição de gênero indica uma diferença marcante entre os grupos: o Cluster 1 possui maioria masculina (21 homens e apenas 4 mulher), enquanto o Cluster 2 apresenta uma composição mais equilibrada (24 mulheres e 39 homens). Esse desequilíbrio sugere, desde o início, que os clusters podem refletir diferenças de percepção associadas ao gênero e potencialmente relacionadas às barreiras ou estímulos vinculados ao interesse por STEM.
 
 \subsection{Interpretação dos Perfis Identificados}
 
 A Tabela \ref{tab:clusters} (resultante dos cruzamentos das variáveis com os clusters) permite inferir características marcantes de cada grupo.
 
-\subsubsection*{Cluster 1: Perfil com menor identificação com STEM e maior presença de sentimentos negativos}
+\subsubsection*{Cluster 1: Perfil mais sensível à exclusão e menor engajamento em STEM}
 
-O primeiro cluster reúne majoritariamente estudantes do gênero masculino. As características predominantes incluem:
-
-\begin{itemize}
-    \item maiores concentrações de respostas intermediárias ou negativas em \textit{preCollegeExactInterestLevel}, indicando baixo ou moderado interesse prévio por áreas de exatas;
-    \item menor incentivo familiar para os estudos, concentrando valores mais baixos em \textit{familyStudyIncentive};
-    \item níveis reduzidos de interesse em seguir carreira em STEM (\textit{stemCareerInterest});
-    \item tempo de dedicação mais limitado a atividades de interesse pessoal na infância (\textit{childhoodHobbiesTime}), sugerindo menor contato prévio com atividades que tipicamente estimulam curiosidade científica e tecnológica;
-    \item maior reprodução de estereótipos de gênero associados a profissões, evidenciado pela concentração elevada de valores altos em \textit{professionsByGenderOpinion}.
-\end{itemize}
-
-Assim, o Cluster 1 corresponde a um perfil menos próximo das áreas STEM, marcado por visões mais rígidas sobre profissões por gênero, menor incentivo familiar, menor interesse prévio e menor engajamento espontâneo em atividades de caráter exploratório durante a infância. Essa combinação está alinhada com a predominância masculina no grupo, dado que os meninos, conforme observado na análise de SHAP, tendem a reproduzir mais estereótipos de gênero e demonstram menor incentivo familiar a continuar os estudos.
-
-\subsubsection*{Cluster 2: Perfil mais orientado ao interesse e permanência em STEM}
-
-O Cluster 2, mais numeroso e composto por uma distribuição de gênero mais balanceada, apresenta padrões diferentes:
+O Cluster 1 reúne predominantemente mulheres e apresenta as seguintes características:
 
 \begin{itemize}
-    \item maiores níveis de interesse prévio em exatas (\textit{preCollegeExactInterestLevel});
-    \item elevados índices de incentivo familiar aos estudos (\textit{familyStudyIncentive}), reforçando achados prévios de que meninas tendem a receber mais incentivo para estudar e permanecer na escola, enquanto meninos recebem mais estímulo para trabalhar;
-    \item maior tempo dedicado a hobbies e atividades na infância (\textit{childhoodHobbiesTime}), o que pode estar associado a maior autonomia e maior espaço para desenvolvimento de interesses pessoais;
-    \item maior interesse declarado em seguir carreira em STEM (\textit{stemCareerInterest});
-    \item menor concordância com estereótipos de gênero em profissões, concentrando valores mais baixos em \textit{professionsByGenderOpinion}.
+\item Valores elevados em \textit{feelingExcludedTech} e \textit{activityGenderRestriction}, indicando maior percepção de exclusão em ambientes de tecnologia e maior restrição de atividades por gênero;
+\item Maior concordância com estereótipos de profissões (\textit{professionsByGenderOpinion}) e certa valorização de professores do gênero predominante (\textit{admiredExactTeachersGender});
+\item Menor interesse prévio por STEM (\textit{feltSTEMNotForMeEver} indica que poucos se sentiram excluídos permanentemente, mas ainda existe percepção de barreira) e menor interesse declarado em seguir carreira em STEM (\textit{stemCareerInterest} apresenta concentração em níveis intermediários);
+\item Menor envolvimento em atividades escolares de interesse por gênero (\textit{schoolExactInterestByGender}) e percepção intermediária de desempenho familiar (\textit{familySchoolPerformanceValue}).
 \end{itemize}
 
-Esse conjunto sugere um perfil mais favorável à aproximação com STEM, tanto em termos de interesse quanto de percepções e contextos de incentivo. Esse grupo mostra características compatíveis com estudantes que se sentem mais confortáveis e motivados em relação à área, além de contarem com mais suporte familiar e apresentarem menor internalização de estereótipos de gênero.
+Esse perfil sugere um grupo com maior sensibilidade a barreiras de gênero e percepções de exclusão em STEM, com engajamento intermediário, refletindo a predominância feminina no cluster.
+\subsubsection*{Cluster 2: Perfil com maior interesse e engajamento em STEM}
 
+O Cluster 2, mais numeroso, apresenta os seguintes padrões:
+
+\begin{itemize}
+\item Menor percepção de exclusão (\textit{feelingExcludedTech}) e menor influência de restrições por gênero (\textit{activityGenderRestriction});
+\item Menor concordância com estereótipos de gênero em profissões (\textit{professionsByGenderOpinion}) e apreciação mais equilibrada de professores (\textit{admiredExactTeachersGender});
+\item Maior histórico de sentimento de STEM “para mim” (\textit{feltSTEMNotForMeEver} concentra-se em níveis mais altos, indicando que muitos se sentiram aptos à área) e maior interesse declarado em seguir carreira em STEM (\textit{stemCareerInterest});
+\item Maior envolvimento em atividades escolares (\textit{schoolExactInterestByGender}) e percepção mais positiva do desempenho familiar (\textit{familySchoolPerformanceValue}).
+\end{itemize}
+
+Esse perfil indica maior engajamento, interesse consolidado em STEM e menor percepção de barreiras ou estereótipos de gênero, compatível com o equilíbrio de gênero observado no cluster.
 \subsection{Síntese Interpretativa dos Grupos}
 
-Os resultados indicam que a formação dos clusters reflete diferenças estruturais relevantes entre os estudantes, especialmente no que diz respeito ao interesse por STEM, às percepções de estereótipos de gênero e ao incentivo recebido ao longo da trajetória educativa.
+Os resultados confirmam que a segmentação em dois clusters reflete diferenças estruturais relevantes entre os estudantes, especialmente no que diz respeito a interesse por STEM, percepção de exclusão e internalização de estereótipos de gênero.
 
-De forma geral, o \textbf{Cluster 1} representa um grupo mais distante das áreas de STEM, com menor interesse e menores incentivos, enquanto o \textbf{Cluster 2} representa um perfil mais envolvido e motivado. A presença de estereótipos de gênero mais fortes no Cluster 1 e de maior incentivo familiar no Cluster 2 reforça achados já observados nas análises anteriores com SHAP.
-
-Além disso, a distribuição de gênero entre os clusters sugere que fatores socioculturais continuam desempenhando papel crucial na forma como homens e mulheres percebem e se relacionam com as áreas STEM, evidenciando a necessidade de ações de incentivo e acolhimento especialmente voltadas para estudantes que se encontram mais próximos do perfil identificado no Cluster 1.
+O \textbf{Cluster 1} é caracterizado por maior sensibilidade a barreiras de gênero e menor engajamento em STEM, enquanto o \textbf{Cluster 2} demonstra maior motivação, interesse consolidado e menor percepção de restrições de gênero. Esses achados reforçam a importância de estratégias de incentivo e acolhimento específicas, particularmente para estudantes mais próximos do perfil identificado no Cluster 1.
 
 \subsection{Visualização Comparativa dos Perfis por Cluster}
 
-Além do dendrograma e das análises numéricas apresentadas, a Figura~\ref{fig:radar_clusters} mostra o gráfico do tipo radar (ou gráfico aranha) com as médias normalizadas das oito \textit{features} que compuseram o processo de clusterização. Essa visualização permite comparar de forma intuitiva o perfil médio dos dois grupos identificados, destacando dimensões nas quais há maior divergência entre os clusters.
+A Figura~\ref{fig:radar_clusters} apresenta um gráfico do tipo radar com as médias normalizadas das oito \textit{features} utilizadas na clusterização. O gráfico evidencia as divergências entre os clusters:
 
-Observa-se que os dois grupos apresentam padrões distintos em praticamente todas as variáveis analisadas, o que reforça a consistência da divisão em dois clusters identificada pelo método hierárquico e confirmada pelos critérios do cotovelo e da silhueta.
+\begin{itemize}
+\item \textbf{Cluster 1}: valores mais altos em \textit{feelingExcludedTech}, \textit{activityGenderRestriction} e \textit{professionsByGenderOpinion}, indicando maior percepção de exclusão e estereótipos de gênero;
+\item \textbf{Cluster 2}: valores mais altos em \textit{stemCareerInterest}, \textit{schoolExactInterestByGender} e \textit{familySchoolPerformanceValue}, evidenciando maior interesse em STEM, maior engajamento escolar e suporte familiar mais consistente.
+\end{itemize}
 
-No caso do \textbf{Cluster 1}, verifica-se que esse grupo apresenta valores mais elevados em \textit{professionsByGenderOpinion} e \textit{feelingExcludedTech}. Isso indica maior concordância com estereótipos de gênero associados a profissões e maior sensação de exclusão em ambientes de tecnologia, respectivamente. Esses resultados são coerentes com o perfil anteriormente descrito para esse cluster, predominantemente masculino e com menor identificação com a área de STEM.
-
-Por outro lado, o \textbf{Cluster 2} apresenta valores mais altos em variáveis que representam incentivo e interesse em STEM, como \textit{familyStudyIncentive}, \textit{preCollegeExactInterestLevel} e \textit{stemCareerInterest}. O comportamento dessas variáveis sugere um grupo com maior motivação educacional, maior incentivo familiar para estudar e maior interesse consolidado em seguir carreira na área. Além disso, o Cluster 2 apresenta níveis mais elevados de \textit{childhoodHobbiesTime}, indicando maior tempo dedicado a atividades formativas ou exploratórias na infância, o que pode estar relacionado ao desenvolvimento de habilidades ou interesses associados à área científica e tecnológica.
-
-Essa visualização contribui para confirmar e sintetizar os padrões previamente observados: enquanto o Cluster 1 se aproxima de um perfil de menor engajamento com STEM e maior manifestação de estereótipos de gênero, o Cluster 2 mostra características mais favoráveis à permanência e ao interesse em carreiras científicas e tecnológicas. Dessa forma, o gráfico aranha funciona como uma ferramenta comparativa poderosa para compreender a estrutura e as diferenças qualitativas entre os grupos identificados no processo de clusterização.
+O gráfico permite compreender de forma intuitiva a estrutura e as diferenças qualitativas entre os grupos, reforçando os padrões observados nas análises numéricas e na segmentação hierárquica.
 %====================================================================
 % Tabela 1 — feelingExcludedTech
 %====================================================================
@@ -909,11 +899,12 @@ Essa visualização contribui para confirmar e sintetizar os padrões previament
 \toprule
 \textbf{Cluster} & \textbf{0.00} & \textbf{0.33} & \textbf{0.66} & \textbf{1.00} \\
 \midrule
-1 & 7 & 9 & 7 & 0 \\
-2 & 5 & 28 & 22 & 10 \\
+1 & 3 & 13 & 8 & 1 \\
+2 & 9 & 24 & 21 & 9 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
 
 %====================================================================
 % Tabela 2 — activityGenderRestriction
@@ -926,8 +917,8 @@ Essa visualização contribui para confirmar e sintetizar os padrões previament
 \toprule
 \textbf{Cluster} & \textbf{0.00} & \textbf{0.25} & \textbf{0.50} & \textbf{0.75} & \textbf{1.00} \\
 \midrule
-1 & 10 & 5 & 4 & 1 & 3 \\
-2 & 12 & 30 & 11 & 10 & 2 \\
+1 & 8 & 8 & 5 & 3 & 1 \\
+2 & 14 & 27 & 10 & 8 & 4 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -943,65 +934,31 @@ Essa visualização contribui para confirmar e sintetizar os padrões previament
 \toprule
 \textbf{Cluster} & \textbf{0.00} & \textbf{0.25} & \textbf{0.50} & \textbf{0.75} & \textbf{1.00} \\
 \midrule
-1 & 0 & 1 & 8 & 11 & 3 \\
-2 & 43 & 18 & 2 & 1 & 1 \\
+1 & 16 & 5 & 4 & 0 & 0 \\
+2 & 27 & 14 & 6 & 12 & 4 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 %====================================================================
-% Tabela 4 — teacherPerformanceValue
+% Tabela 4 — feltSTEMNotForMeEver
 %====================================================================
 \begin{table}[H]
 \centering
-\caption{Distribuição da feature \textit{teacherPerformanceValue} por cluster}
-\label{tab:teacherPerformanceValue}
-\begin{tabular}{lccccc}
+\caption{Distribuição da feature \textit{feltSTEMNotForMeEver} por cluster}
+\label{tab:feltSTEMNotForMeEver}
+\begin{tabular}{lccc}
 \toprule
-\textbf{Cluster} & \textbf{0.00} & \textbf{0.25} & \textbf{0.50} & \textbf{0.75} & \textbf{1.00} \\
+\textbf{Cluster} & \textbf{0.0} & \textbf{0.5} & \textbf{1.0} \\
 \midrule
-1 & 3 & 11 & 5 & 2 & 2 \\
-2 & 26 & 30 & 4 & 5 & 0 \\
+1 & 18 & 7 & 0 \\
+2 & 0 & 6 & 57 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 %====================================================================
-% Tabela 5 — preCollegeExactInterestLevel
-%====================================================================
-\begin{table}[H]
-\centering
-\caption{Distribuição da feature \textit{preCollegeExactInterestLevel} por cluster}
-\label{tab:preCollegeExactInterestLevel}
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Cluster} & \textbf{0.00} & \textbf{0.33} & \textbf{0.66} & \textbf{1.00} \\
-\midrule
-1 & 15 & 6 & 2 & 0 \\
-2 & 31 & 22 & 9 & 3 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-%====================================================================
-% Tabela 6 — familyStudyIncentive
-%====================================================================
-\begin{table}[H]
-\centering
-\caption{Distribuição da feature \textit{familyStudyIncentive} por cluster}
-\label{tab:familyStudyIncentive}
-\begin{tabular}{lccccc}
-\toprule
-\textbf{Cluster} & \textbf{0.00} & \textbf{0.25} & \textbf{0.50} & \textbf{0.75} & \textbf{1.00} \\
-\midrule
-1 & 0 & 0 & 4 & 9 & 10 \\
-2 & 3 & 5 & 14 & 19 & 24 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-%====================================================================
-% Tabela 7 — stemCareerInterest
+% Tabela 5 — stemCareerInterest
 %====================================================================
 \begin{table}[H]
 \centering
@@ -1011,31 +968,65 @@ Essa visualização contribui para confirmar e sintetizar os padrões previament
 \toprule
 \textbf{Cluster} & \textbf{0.00} & \textbf{0.25} & \textbf{0.50} & \textbf{0.75} & \textbf{1.00} \\
 \midrule
-1 & 0 & 0 & 2 & 11 & 10 \\
-2 & 1 & 3 & 3 & 26 & 32 \\
+1 & 0 & 0 & 1 & 7 & 17 \\
+2 & 1 & 3 & 4 & 30 & 25 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 %====================================================================
-% Tabela 8 — childhoodHobbiesTime
+% Tabela 6 — admiredExactTeachersGender
 %====================================================================
 \begin{table}[H]
 \centering
-\caption{Distribuição da feature \textit{childhoodHobbiesTime} por cluster}
-\label{tab:childhoodHobbiesTime}
+\caption{Distribuição da feature \textit{admiredExactTeachersGender} por cluster}
+\label{tab:admiredExactTeachersGender}
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Cluster} & \textbf{0.00} & \textbf{0.33} & \textbf{0.66} & \textbf{1.00} \\
 \midrule
-1 & 0 & 1 & 12 & 10 \\
-2 & 2 & 4 & 29 & 30 \\
+1 & 6 & 4 & 14 & 1 \\
+2 & 24 & 12 & 19 & 8 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 %====================================================================
-% Tabela 9 — Tamanho dos Clusters
+% Tabela 7 — schoolExactInterestByGender
+%====================================================================
+\begin{table}[H]
+\centering
+\caption{Distribuição da feature \textit{schoolExactInterestByGender} por cluster}
+\label{tab:schoolExactInterestByGender}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Cluster} & \textbf{0.0} & \textbf{0.5} & \textbf{1.0} \\
+\midrule
+1 & 5 & 14 & 6 \\
+2 & 5 & 42 & 16 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%====================================================================
+% Tabela 8 — familySchoolPerformanceValue
+%====================================================================
+\begin{table}[H]
+\centering
+\caption{Distribuição da feature \textit{familySchoolPerformanceValue} por cluster}
+\label{tab:familySchoolPerformanceValue}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Cluster} & \textbf{0.00} & \textbf{0.33} & \textbf{0.66} & \textbf{1.00} \\
+\midrule
+1 & 9 & 10 & 5 & 1 \\
+2 & 28 & 26 & 5 & 4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%====================================================================
+% Tabela 9 — Tamanho de cada Cluster
 %====================================================================
 \begin{table}[H]
 \centering
@@ -1045,8 +1036,8 @@ Essa visualização contribui para confirmar e sintetizar os padrões previament
 \toprule
 \textbf{Cluster} & \textbf{Quantidade} \\
 \midrule
-1 & 23 \\
-2 & 65 \\
+1 & 25 \\
+2 & 63 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1060,25 +1051,24 @@ Essa visualização contribui para confirmar e sintetizar os padrões previament
 \label{tab:genderByCluster}
 \begin{tabular}{lcc}
 \toprule
-\textbf{Cluster} & \textbf{Masculino (0)} & \textbf{Feminino (1)} \\
+\textbf{Cluster} & \textbf{Feminino (0)} & \textbf{Masculino (1)} \\
 \midrule
-1 & 1 & 22 \\
-2 & 27 & 38 \\
+1 & 4 & 21 \\
+2 & 24 & 39 \\
 \bottomrule
 \end{tabular}
+\vspace{2mm}
+\begin{flushleft}\footnotesize{\textbf{Nota:} na codificação utilizada neste estudo, o valor \texttt{0} corresponde ao gênero feminino e o valor \texttt{1} ao gênero masculino.}\end{flushleft}
 \end{table}
-
-
-
-
 
 
 \begin{figure}[h!]
     \centering
     \caption{Legenda}
-    \includegraphics[width=0.9\textwidth]{geral_stem/aranha_geral_gender_stem.png}
+    \includegraphics[width=0.9\textwidth]{geral_stem/aranha2.png}
     \label{fig:shap_masculino_future}
 \end{figure}
+
 
 \chapter{CONSIDERAÇÕES FINAIS}
 
