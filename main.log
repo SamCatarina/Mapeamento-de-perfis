@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.19)  30 NOV 2025 15:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.19)  30 NOV 2025 21:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -513,7 +513,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.41 ... Perfis por Cluster}{36}{subsection.4.3.6}
+l.41 ...retativa dos Grupos}{39}{subsection.4.3.5}
                                                   % [1
 
 ])
@@ -529,110 +529,114 @@ Cap\'{\i }tulo 2.
 [7
 
 ] [8] [9] [10] [11] Excluding 'comment' comment.
-Overfull \hbox (4.35973pt too wide) in paragraph at lines 185--185
+Overfull \hbox (4.35973pt too wide) in paragraph at lines 203--203
 []\T1/cmr/bx/n/17.28 Técnicas de Agru-pa-mento como Es-tra-té-gia de Ma-
  []
 
 [12]
-Overfull \hbox (3.11061pt too wide) in paragraph at lines 195--200
+Overfull \hbox (3.11061pt too wide) in paragraph at lines 213--218
 \T1/cmr/m/n/12 TRA-BA-LHO. EX-PLI-CAR A TÉC-NICA UTI-LI-ZADA PARA A ES-CO-LHA DA QUAN-
  []
 
 [13] [14] [15] Excluding 'comment' comment.
-Overfull \hbox (3.14774pt too wide) in alignment at lines 313--319
+Overfull \hbox (3.14774pt too wide) in alignment at lines 299--305
  [] [] 
  []
 
 
-Overfull \hbox (3.14774pt too wide) in alignment at lines 319--323
+Overfull \hbox (3.14774pt too wide) in alignment at lines 305--309
  [] [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--330
-[]\T1/cmr/m/n/12 Master, Melt-zoff e
+Underfull \hbox (badness 1810) in paragraph at lines 325--325
+[]|\T1/cmr/m/n/12 ([]BOHRNSTEDT et al.[],
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--345
-[]|[]\T1/cmr/m/n/12 Zúñiga-Mejías e Huin-
+Underfull \hbox (badness 10000) in paragraph at lines 328--328
+[]|\T1/cmr/m/n/12 ([]MENEZES; SAN-TOS[],
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--348
-[]|[]\T1/cmr/m/n/12 Tellhed, Björ-klund e
+Underfull \hbox (badness 10000) in paragraph at lines 331--331
+[]|\T1/cmr/m/n/12 ([]ZúñIGA-MEJíAS;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--351
-[]|[]\T1/cmr/m/n/12 Su, Putka e Rounds[]
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+[]|\T1/cmr/m/n/12 ([]TELLHED; BJöR-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 366--366
-[]|[]\T1/cmr/m/n/12 Dulce-Salcedo, Mal-do-
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
+\T1/cmr/m/n/12 KLUND; STRAND[],
  []
 
 
-Overfull \hbox (3.14774pt too wide) in alignment at lines 323--372
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
+\T1/cmr/m/n/12 DA-RIL-LAS; MARTí-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 352--352
+[]|\T1/cmr/m/n/12 ([]DULCE-SALCEDO;
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 352--352
+\T1/cmr/m/n/12 MAL-DO-NADO; SáN-
+ []
+
+
+Overfull \hbox (3.14774pt too wide) in alignment at lines 309--358
  [] [] 
  []
 
-[16] [17] [18] [19]
+[16] [17] [18] [19] [20]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 399.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+) [21]
 Cap\'{\i }tulo 3.
 
-Overfull \hbox (2.43639pt too wide) in paragraph at lines 412--413
+Overfull \hbox (2.43639pt too wide) in paragraph at lines 430--431
 []\T1/cmr/m/n/12 Antes da aná-lise, os da-dos co-le-ta-dos pas-sa-rão por um pro-cesso de pré-processamento,
  []
 
-[20
+[22
 
-] [21] [22]
+] [23] [24]
 Cap\'{\i }tulo 4.
-<graficos_exploratoria/grafico_gender.png, id=406, 715.473pt x 354.123pt>
+<graficos_exploratoria/grafico_gender.png, id=421, 715.473pt x 354.123pt>
 File: graficos_exploratoria/grafico_gender.png Graphic file (type png)
 <use graficos_exploratoria/grafico_gender.png>
-Package pdftex.def Info: graficos_exploratoria/grafico_gender.png  used on input line 454.
+Package pdftex.def Info: graficos_exploratoria/grafico_gender.png  used on input line 472.
 (pdftex.def)             Requested size: 396.91325pt x 196.44872pt.
-<graficos_exploratoria/grafico_coursename.png, id=408, 715.473pt x 354.6048pt>
+<graficos_exploratoria/grafico_coursename.png, id=423, 715.473pt x 354.6048pt>
 File: graficos_exploratoria/grafico_coursename.png Graphic file (type png)
 <use graficos_exploratoria/grafico_coursename.png>
-Package pdftex.def Info: graficos_exploratoria/grafico_coursename.png  used on input line 461.
+Package pdftex.def Info: graficos_exploratoria/grafico_coursename.png  used on input line 479.
 (pdftex.def)             Requested size: 396.91325pt x 196.71599pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<graficos_exploratoria/grafico_courseareageneral.png, id=409, 715.473pt x 353.8821pt>
+<graficos_exploratoria/grafico_courseareageneral.png, id=424, 715.473pt x 353.8821pt>
 File: graficos_exploratoria/grafico_courseareageneral.png Graphic file (type png)
 <use graficos_exploratoria/grafico_courseareageneral.png>
-Package pdftex.def Info: graficos_exploratoria/grafico_courseareageneral.png  used on input line 468.
+Package pdftex.def Info: graficos_exploratoria/grafico_courseareageneral.png  used on input line 486.
 (pdftex.def)             Requested size: 396.91325pt x 196.31508pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (38.61899pt too wide) in alignment at lines 478--483
+Overfull \hbox (38.61899pt too wide) in alignment at lines 496--501
  [] [] [] [] 
  []
 
 
-Overfull \hbox (38.61899pt too wide) in alignment at lines 483--488
+Overfull \hbox (38.61899pt too wide) in alignment at lines 501--506
  [] [] [] [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 491--492
-[]|\T1/cmr/m/n/12 Seleção
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 497--498
-[]|\T1/cmr/m/n/12 Seleção
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 503--504
-[]|\T1/cmr/m/n/12 Seleção
  []
 
 
@@ -641,28 +645,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 509--510
  []
 
 
-Underfull \hbox (badness 1275) in paragraph at lines 510--511
+Underfull \hbox (badness 10000) in paragraph at lines 515--516
+[]|\T1/cmr/m/n/12 Seleção
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 521--522
+[]|\T1/cmr/m/n/12 Seleção
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 527--528
+[]|\T1/cmr/m/n/12 Seleção
+ []
+
+
+Underfull \hbox (badness 1275) in paragraph at lines 528--529
 []|\T1/cmr/m/n/12 Sim, a mai-o-ria
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 524--525
-[]|\T1/cmr/m/n/12 Seleção
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 531--532
-[]\T1/cmr/m/n/12 Nenhum in-te-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 536--537
-[]|\T1/cmr/m/n/12 Seleção
- []
-
-
-Underfull \hbox (badness 1184) in paragraph at lines 541--542
-[]|\T1/cmr/m/n/12 Tenho in-te-resse em me tor-nar
  []
 
 
@@ -671,86 +670,104 @@ Underfull \hbox (badness 10000) in paragraph at lines 542--543
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 550--551
+Underfull \hbox (badness 10000) in paragraph at lines 549--550
+[]\T1/cmr/m/n/12 Nenhum in-te-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 554--555
 []|\T1/cmr/m/n/12 Seleção
  []
 
 
-Overfull \hbox (38.61899pt too wide) in alignment at lines 488--561
+Underfull \hbox (badness 1184) in paragraph at lines 559--560
+[]|\T1/cmr/m/n/12 Tenho in-te-resse em me tor-nar
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--561
+[]|\T1/cmr/m/n/12 Seleção
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 568--569
+[]|\T1/cmr/m/n/12 Seleção
+ []
+
+
+Overfull \hbox (38.61899pt too wide) in alignment at lines 506--579
  [] [] [] [] 
  []
 
-[23
+[25
 
- <./graficos_exploratoria/grafico_gender.png>] [24 <./graficos_exploratoria/grafico_coursename.png> <./graficos_exploratoria/grafico_courseareageneral.png>] [25]
-<geral_stem/shap_geral_gender_stem.png, id=431, 687.5286pt x 425.6703pt>
+ <./graficos_exploratoria/grafico_gender.png>] [26 <./graficos_exploratoria/grafico_coursename.png> <./graficos_exploratoria/grafico_courseareageneral.png>] [27]
+<geral_stem/shap_geral_gender_stem.png, id=446, 687.5286pt x 425.6703pt>
 File: geral_stem/shap_geral_gender_stem.png Graphic file (type png)
 <use geral_stem/shap_geral_gender_stem.png>
-Package pdftex.def Info: geral_stem/shap_geral_gender_stem.png  used on input line 575.
+Package pdftex.def Info: geral_stem/shap_geral_gender_stem.png  used on input line 593.
 (pdftex.def)             Requested size: 396.91325pt x 245.74579pt.
- [26 <./geral_stem/shap_geral_gender_stem.png>] [27] [28] [29] [30] [31]
-<feminino_stem/shap_feminino_future_stem.png, id=478, 688.0104pt x 425.6703pt>
+ [28 <./geral_stem/shap_geral_gender_stem.png>] [29] [30] [31] [32] [33]
+<feminino_stem/shap_feminino_future_stem.png, id=492, 688.0104pt x 425.6703pt>
 File: feminino_stem/shap_feminino_future_stem.png Graphic file (type png)
 <use feminino_stem/shap_feminino_future_stem.png>
-Package pdftex.def Info: feminino_stem/shap_feminino_future_stem.png  used on input line 788.
+Package pdftex.def Info: feminino_stem/shap_feminino_future_stem.png  used on input line 806.
 (pdftex.def)             Requested size: 396.91325pt x 245.57042pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<masculino_stem/shap_masculino_future_stem.png, id=479, 688.974pt x 425.6703pt>
+<masculino_stem/shap_masculino_future_stem.png, id=493, 688.974pt x 425.6703pt>
 File: masculino_stem/shap_masculino_future_stem.png Graphic file (type png)
 <use masculino_stem/shap_masculino_future_stem.png>
-Package pdftex.def Info: masculino_stem/shap_masculino_future_stem.png  used on input line 796.
+Package pdftex.def Info: masculino_stem/shap_masculino_future_stem.png  used on input line 814.
 (pdftex.def)             Requested size: 396.91325pt x 245.22617pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[32]
+[34]
 
-LaTeX Warning: Reference `fig:dendrograma' on page 33 undefined on input line 808.
+LaTeX Warning: Reference `fig:dendrograma' on page 35 undefined on input line 826.
 
-[33 <./feminino_stem/shap_feminino_future_stem.png> <./masculino_stem/shap_masculino_future_stem.png>]
-
-LaTeX Warning: Reference `fig:cotovelo' on page 34 undefined on input line 814.
-
-
-LaTeX Warning: Reference `tab:clusters' on page 34 undefined on input line 824.
-
-[34] [35]
-
-LaTeX Warning: Reference `fig:radar_clusters' on page 36 undefined on input line 864.
-
-[36] [37] [38]
-<geral_stem/dendrograma_geral_gender_stem.png, id=526, 893.0163pt x 507.5763pt>
+[35 <./feminino_stem/shap_feminino_future_stem.png> <./masculino_stem/shap_masculino_future_stem.png>]
+<geral_stem/dendrograma_geral_gender_stem.png, id=509, 893.0163pt x 507.5763pt>
 File: geral_stem/dendrograma_geral_gender_stem.png Graphic file (type png)
 <use geral_stem/dendrograma_geral_gender_stem.png>
-Package pdftex.def Info: geral_stem/dendrograma_geral_gender_stem.png  used on input line 1048.
+Package pdftex.def Info: geral_stem/dendrograma_geral_gender_stem.png  used on input line 833.
 (pdftex.def)             Requested size: 396.91325pt x 225.59578pt.
-<geral_stem/cotovelo_geral_gender_stem.png, id=527, 363.2772pt x 339.4281pt>
+
+
+LaTeX Warning: Reference `fig:cotovelo' on page 36 undefined on input line 838.
+
+<geral_stem/cotovelo_geral_gender_stem.png, id=510, 363.2772pt x 339.4281pt>
 File: geral_stem/cotovelo_geral_gender_stem.png Graphic file (type png)
 <use geral_stem/cotovelo_geral_gender_stem.png>
-Package pdftex.def Info: geral_stem/cotovelo_geral_gender_stem.png  used on input line 1054.
+Package pdftex.def Info: geral_stem/cotovelo_geral_gender_stem.png  used on input line 843.
 (pdftex.def)             Requested size: 396.91325pt x 370.88084pt.
 
-
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<geral_stem/aranha_geral_gender_stem.png, id=528, 564.1878pt x 473.6094pt>
+[36 <./geral_stem/dendrograma_geral_gender_stem.png>]
+
+LaTeX Warning: Reference `tab:clusters' on page 37 undefined on input line 852.
+
+[37 <./geral_stem/cotovelo_geral_gender_stem.png>] [38]
+
+LaTeX Warning: Reference `fig:radar_clusters' on page 39 undefined on input line 892.
+
+[39] [40] [41]
+<geral_stem/aranha_geral_gender_stem.png, id=551, 564.1878pt x 473.6094pt>
 File: geral_stem/aranha_geral_gender_stem.png Graphic file (type png)
 <use geral_stem/aranha_geral_gender_stem.png>
-Package pdftex.def Info: geral_stem/aranha_geral_gender_stem.png  used on input line 1062.
+Package pdftex.def Info: geral_stem/aranha_geral_gender_stem.png  used on input line 1079.
 (pdftex.def)             Requested size: 396.91325pt x 333.20091pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[39 <./geral_stem/dendrograma_geral_gender_stem.png>] [40 <./geral_stem/cotovelo_geral_gender_stem.png>] [41 <./geral_stem/aranha_geral_gender_stem.png>]
+ [42 <./geral_stem/aranha_geral_gender_stem.png>]
 Cap\'{\i }tulo 5.
-(./main.bbl [42
+[43
 
-] [43
+] [44] (./main.bbl [45] [46
 
-] [44]) [45] (./main.aux)
+] [47]) [48] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -763,21 +780,21 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 74515E0323965C0AF2AB61EA278EED23;7598.
+(rerunfilecheck)             Checksum: F1968DFB28044A0498C2D8564125E571;7780.
  ) 
 Here is how much of TeX's memory you used:
- 14596 strings out of 474222
- 233868 string characters out of 5748732
- 1944975 words of memory out of 5000000
- 36477 multiletter control sequences out of 15000+600000
- 571439 words of font info for 66 fonts, out of 8000000 for 9000
+ 14621 strings out of 474222
+ 234569 string characters out of 5748732
+ 1943975 words of memory out of 5000000
+ 36498 multiletter control sequences out of 15000+600000
+ 571752 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,10n,79p,2214b,649s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on main.pdf (46 pages, 1767585 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on main.pdf (49 pages, 1780550 bytes).
 PDF statistics:
- 718 PDF objects out of 1000 (max. 8388607)
- 606 compressed objects within 7 object streams
+ 733 PDF objects out of 1000 (max. 8388607)
+ 620 compressed objects within 7 object streams
  163 named destinations out of 1000 (max. 500000)
- 278 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 286 words of extra memory for PDF output out of 10000 (max. 10000000)
 
